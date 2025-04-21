@@ -1,0 +1,26 @@
+export type sexo = "M" | "F";
+export type tipoDocumento = "DNI" | "LibretaCivica" | "LibretaEnrolamiento" | "Pasaporte"
+
+export interface AlumnosAtributos {
+    apellido: string;
+    nombre: string;
+    nroDocumento: string;
+    tipoDocumento: tipoDocumento;
+    fechaNacimiento: string;
+    sexo: sexo;
+    nroLegajo: number;
+    fechaIngreso: Date;
+}
+
+export interface FacultadAtributos {
+    nombre: string;
+    abreviatura: string;
+    directorio: string;
+    sigla: string;
+    ciudad: string;
+    codigoPostal: string;
+    telefono: string;
+    domicilio: string;
+    email: string;
+    contacto: string;
+}
