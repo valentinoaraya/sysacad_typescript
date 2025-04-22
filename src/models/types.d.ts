@@ -24,3 +24,8 @@ export interface FacultadAtributos {
     email: string;
     contacto: string;
 }
+
+export interface UniversidadAtributos {
+    nombre: string;
+    sigla:string;
+}
