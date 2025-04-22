@@ -30,11 +30,6 @@ export class Facultad implements FacultadAtributos {
             throw new Error("El domicilio es obligatorio");
         }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(params.email)) {
-            throw new Error("El email no es válido");
-        }
-
         this.nombre = params.nombre;
         this.abreviatura = params.abreviatura;
         this.directorio = params.directorio;
