@@ -14,6 +14,7 @@ test("debería crear instancia de la clase facultad y leer sus atributos", () =>
         "rvilches@frsr.utn.edu.ar",
     )
 
+    expect(facultad).toBeTruthy()
     expect(facultad.nombre).toBe("Facultad Regional de San Rafael")
     expect(facultad.abreviatura).toBe("FRSR")
     expect(facultad.directorio).toBe("Facultad de Ingeniería")
