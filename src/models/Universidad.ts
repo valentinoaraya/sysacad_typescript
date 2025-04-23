@@ -1,18 +1,18 @@
 import { type UniversidadAtributos } from "./types";
 
-export class Universidad implements UniversidadAtributos{
-    public readonly nombre:string;
-    public readonly sigla:string;
-
-    constructor(params: UniversidadAtributos){
-        if (!params.nombre){
+export class Universidad implements UniversidadAtributos {
+    constructor(
+        private readonly _nombre: string,
+        private readonly _sigla: string
+    ) {
+        if (!_nombre) {
             throw new Error("El nombre es obligatorio");
         }
-        if (!params.sigla){
+        if (!_sigla) {
             throw new Error("La sigla es obligatoria");
         }
-        this.nombre = params.nombre;
-        this.sigla = params.sigla;
-    
     }
+
+    get nombre(): string { return this._nombre }
+    get sigla(): string { return this._sigla }
 }

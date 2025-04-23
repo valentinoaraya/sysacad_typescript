@@ -4,16 +4,16 @@ test("debería crear instancia de la clase alumno y leer sus atributos", () => {
 
     const fechaIngreso = new Date("2023-03-11")
 
-    const alumno = new Alumno({
-        nombre: "Valentino",
-        apellido: "Araya",
-        nroDocumento: "45361303",
-        tipoDocumento: "DNI",
-        fechaNacimiento: "2004-07-14",
-        sexo: "M",
-        nroLegajo: 9938,
-        fechaIngreso: fechaIngreso,
-    })
+    const alumno = new Alumno(
+        "Araya",
+        "Valentino",
+        "45361303",
+        "DNI",
+        "2004-07-14",
+        "M",
+        9938,
+        fechaIngreso,
+    )
 
     expect(alumno.nombre).toBe("Valentino")
     expect(alumno.apellido).toBe("Araya")
