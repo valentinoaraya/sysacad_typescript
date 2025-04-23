@@ -53,3 +53,9 @@ export interface AutoridadAtributos {
     telefono: string;
     email: string;
 }
+
+export interface EspecialidadAtributos {
+    nombre: string;
+    letra: string;
+    observacion: string;
+}
