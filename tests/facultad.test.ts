@@ -1,18 +1,18 @@
 import { Facultad } from "../src/models/Facultad"
 
 test("debería crear instancia de la clase facultad y leer sus atributos", () => {
-    const facultad = new Facultad({
-        nombre: "Facultad Regional de San Rafael",
-        abreviatura: "FRSR",
-        directorio: "Facultad de Ingeniería",
-        sigla: "FRSR",
-        ciudad: "San Rafael",
-        codigoPostal: "5600",
-        telefono: "02604421078",
-        domicilio: "Urquiza 314",
-        email: "rvilches@frsr.utn.edu.ar",
-        contacto: "Ing. Roberto D. Vilches"
-    })
+    const facultad = new Facultad(
+        "Facultad Regional de San Rafael",
+        "FRSR",
+        "Facultad de Ingeniería",
+        "FRSR",
+        "5600",
+        "San Rafael",
+        "Urquiza 314",
+        "02604421078",
+        "Ing. Roberto D. Vilches",
+        "rvilches@frsr.utn.edu.ar",
+    )
 
     expect(facultad.nombre).toBe("Facultad Regional de San Rafael")
     expect(facultad.abreviatura).toBe("FRSR")
