@@ -29,3 +29,9 @@ export interface UniversidadAtributos {
     nombre: string;
     sigla:string;
 }
+
+export interface EspecialidadAtributos {
+    nombre: string;
+    letra: string;
+    observacion: string;
+}
