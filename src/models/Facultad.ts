@@ -11,7 +11,7 @@ export class Facultad implements FacultadAtributos {
         private readonly _domicilio: string,
         private readonly _telefono: string,
         private readonly _contacto: string,
-        private readonly _email: string
+        private readonly _email: string,
     ) {
         if (!_nombre) throw new Error("El nombre es obligatorio");
         if (!_abreviatura) throw new Error("La abreviatura es obligatoria");
