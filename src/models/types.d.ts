@@ -29,3 +29,27 @@ export interface UniversidadAtributos {
     nombre: string;
     sigla:string;
 }
+
+export interface CargoAtributos{
+    nombre: string;
+    puntos: number;
+    categoriaCargo: CategoriaCargoAtributos;
+    tipoDedicacion: TipoDedicacionAtributos;
+}
+
+export interface CategoriaCargoAtributos{
+    nombre: string;
+}
+
+export interface TipoDedicacionAtributos{
+    nombre: string;
+    observacion: string;
+}
+
+export interface AutoridadAtributos {
+    apellido: string;
+    nombre: string;
+    cargo: CargoAtributos;
+    telefono: string;
+    email: string;
+}
