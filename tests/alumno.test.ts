@@ -15,6 +15,7 @@ test("debería crear instancia de la clase alumno y leer sus atributos", () => {
         fechaIngreso,
     )
 
+    expect(alumno).toBeTruthy()
     expect(alumno.nombre).toBe("Valentino")
     expect(alumno.apellido).toBe("Araya")
     expect(alumno.nroDocumento).toBe("45361303")
