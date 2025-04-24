@@ -66,3 +66,7 @@ export interface OrientacionAtributos{
     plan: PlanAtributos;
     materia: MateriaAtributos;
 }
+
+export interface GradoAtributos{
+    nombre:string;
+}
