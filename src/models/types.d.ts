@@ -59,3 +59,10 @@ export interface EspecialidadAtributos {
     letra: string;
     observacion: string;
 }
+
+export interface OrientacionAtributos{
+    nombre: string;
+    especialidad: EspecialidadAtributos;
+    plan: PlanAtributos;
+    materia: MateriaAtributos;
+}
