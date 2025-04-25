@@ -27,21 +27,21 @@ export interface FacultadAtributos {
 
 export interface UniversidadAtributos {
     nombre: string;
-    sigla:string;
+    sigla: string;
 }
 
-export interface CargoAtributos{
+export interface CargoAtributos {
     nombre: string;
     puntos: number;
     categoriaCargo: CategoriaCargoAtributos;
     tipoDedicacion: TipoDedicacionAtributos;
 }
 
-export interface CategoriaCargoAtributos{
+export interface CategoriaCargoAtributos {
     nombre: string;
 }
 
-export interface TipoDedicacionAtributos{
+export interface TipoDedicacionAtributos {
     nombre: string;
     observacion: string;
 }
@@ -60,13 +60,19 @@ export interface EspecialidadAtributos {
     observacion: string;
 }
 
-export interface OrientacionAtributos{
+export interface OrientacionAtributos {
     nombre: string;
     especialidad: EspecialidadAtributos;
     plan: PlanAtributos;
     materia: MateriaAtributos;
 }
 
-export interface GradoAtributos{
-    nombre:string;
+export interface GradoAtributos {
+    nombre: string;
+}
+
+export interface MateriaAtributos {
+    nombre: string;
+    codigo: string;
+    observacion: string;
 }
