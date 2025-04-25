@@ -1,4 +1,4 @@
-import { OrientacionAtributos, EspecialidadAtributos, type PlanAtributos, type MateriaAtributos} from "./types";
+import { type OrientacionAtributos, type EspecialidadAtributos, type PlanAtributos, type MateriaAtributos } from "./types";
 
 export class Orientacion implements OrientacionAtributos {
     constructor(
@@ -24,6 +24,6 @@ export class Orientacion implements OrientacionAtributos {
 
     get nombre(): string { return this._nombre }
     get especialidad(): EspecialidadAtributos { return this._especialidad }
-    get plan(): PlanAtributos {return this._plan}
-    get materia(): MateriaAtributos {return this._materia}
+    get plan(): PlanAtributos { return this._plan }
+    get materia(): MateriaAtributos { return this._materia }
 }

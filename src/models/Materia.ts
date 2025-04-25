@@ -1,4 +1,4 @@
-import { MateriaAtributos } from "./types";
+import { type MateriaAtributos } from "./types";
 
 export class Materia implements MateriaAtributos {
     constructor(

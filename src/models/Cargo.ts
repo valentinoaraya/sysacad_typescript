@@ -1,4 +1,4 @@
-import { CategoriaCargoAtributos, type CargoAtributos, type TipoDedicacionAtributos} from "./types";
+import { type CategoriaCargoAtributos, type CargoAtributos, type TipoDedicacionAtributos } from "./types";
 
 export class Cargo implements CargoAtributos {
     constructor(
@@ -24,6 +24,6 @@ export class Cargo implements CargoAtributos {
 
     get nombre(): string { return this._nombre }
     get puntos(): number { return this._puntos }
-    get categoriaCargo(): CategoriaCargoAtributos {return this._categoriaCargo}
-    get tipoDedicacion(): TipoDedicacionAtributos {return this._tipoDedicacion}
+    get categoriaCargo(): CategoriaCargoAtributos { return this._categoriaCargo }
+    get tipoDedicacion(): TipoDedicacionAtributos { return this._tipoDedicacion }
 }

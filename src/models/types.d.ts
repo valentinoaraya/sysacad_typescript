@@ -76,3 +76,7 @@ export interface MateriaAtributos {
     codigo: string;
     observacion: string;
 }
+
+export interface DepartamentoAtributos {
+    nombre: string
+}
