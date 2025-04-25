@@ -1,4 +1,4 @@
-import { CargoAtributos, type AutoridadAtributos} from "./types";
+import { type CargoAtributos, type AutoridadAtributos } from "./types";
 
 export class Autoridad implements AutoridadAtributos {
     constructor(
