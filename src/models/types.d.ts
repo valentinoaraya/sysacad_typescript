@@ -85,3 +85,10 @@ export interface TipoEspecialidadAtributos  {
     nombre : string;
     nivel : string;
 }
+
+export interface PlanAtributos {
+    nombre : string;
+    fechaInicio : string;
+    fechaFin : string;
+    observacion : string;
+}
