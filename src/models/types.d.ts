@@ -78,5 +78,10 @@ export interface MateriaAtributos {
 }
 
 export interface DepartamentoAtributos {
-    nombre: string
+    nombre: string;
+}
+
+export interface TipoEspecialidadAtributos  {
+    nombre : string;
+    nivel : string;
 }
