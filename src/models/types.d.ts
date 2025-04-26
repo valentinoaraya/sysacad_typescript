@@ -78,5 +78,17 @@ export interface MateriaAtributos {
 }
 
 export interface DepartamentoAtributos {
-    nombre: string
+    nombre: string;
+}
+
+export interface TipoEspecialidadAtributos  {
+    nombre : string;
+    nivel : string;
+}
+
+export interface PlanAtributos {
+    nombre : string;
+    fechaInicio : string;
+    fechaFin : string;
+    observacion : string;
 }
