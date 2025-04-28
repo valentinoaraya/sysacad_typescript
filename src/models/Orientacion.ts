@@ -1,4 +1,5 @@
-import { type OrientacionAtributos, type EspecialidadAtributos, type PlanAtributos, type MateriaAtributos } from "./types";
+import { type OrientacionAtributos, type EspecialidadAtributos, type PlanAtributos, type MateriaAtributos } from "../types";
+import { OrientacionValidator } from "../validators/OrientacionValidator";
 
 export class Orientacion implements OrientacionAtributos {
     constructor(
@@ -7,19 +8,7 @@ export class Orientacion implements OrientacionAtributos {
         private readonly _plan: PlanAtributos,
         private readonly _materia: MateriaAtributos,
     ) {
-
-        if (!_especialidad) {
-            throw new Error("La especialidad es obligatoria.");
-        }
-        if (!_nombre) {
-            throw new Error("El nombre es obligatorio.");
-        }
-        if (!_plan) {
-            throw new Error("El plan es obligatorio.");
-        }
-        if (!_materia) {
-            throw new Error("La materia es obligatoria.");
-        }
+        OrientacionValidator.validate(_nombre, _especialidad, _plan, _materia)
     }
 
     get nombre(): string { return this._nombre }

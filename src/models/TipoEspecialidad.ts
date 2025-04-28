@@ -1,17 +1,13 @@
-import { type TipoEspecialidadAtributos } from "./types";
+import { type TipoEspecialidadAtributos } from "../types";
+import { TipoEspecialidadVlaidator } from "../validators/TipoEspecialidadValidator";
 
 export class TipoEspecialidad implements TipoEspecialidadAtributos {
-    constructor (
+    constructor(
         private readonly _nombre: string,
         private readonly _nivel: string
-    ){
-        if (!_nombre){
-            throw new Error("El nombre es obligatorio")
-        }
-        if (!_nivel){
-            throw new Error("El nivel es obligatorio")
-        }
+    ) {
+        TipoEspecialidadVlaidator.validate(_nombre, _nivel)
     }
-    get nombre():string {return this._nombre}
-    get nivel():string {return this._nivel}
+    get nombre(): string { return this._nombre }
+    get nivel(): string { return this._nivel }
 }

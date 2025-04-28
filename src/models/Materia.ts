@@ -1,4 +1,5 @@
-import { type MateriaAtributos } from "./types";
+import { type MateriaAtributos } from "../types";
+import { MateriaValidator } from "../validators/MateriaValidator";
 
 export class Materia implements MateriaAtributos {
     constructor(
@@ -6,9 +7,7 @@ export class Materia implements MateriaAtributos {
         private readonly _codigo: string,
         private readonly _observacion: string,
     ) {
-        if (!_nombre) throw new Error("El nombre es obligatorio");
-        if (!_codigo) throw new Error("El código es obligatorio");
-        if (!_observacion) throw new Error("La observación es obligatoria");
+        MateriaValidator.validate(_nombre, _codigo, _observacion);
     }
 
     get nombre(): string { return this._nombre }
