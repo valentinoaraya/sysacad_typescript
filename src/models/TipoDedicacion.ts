@@ -1,17 +1,12 @@
-import { type TipoDedicacionAtributos } from "./types";
+import { type TipoDedicacionAtributos } from "../types";
+import { TipoDedicacionValidator } from "../validators/TipoDedicacionValidator";
 
 export class TipoDedicacion implements TipoDedicacionAtributos {
     constructor(
         private readonly _nombre: string,
         private readonly _observacion: string,
     ) {
-
-        if (!_observacion) {
-            throw new Error("Las observaciones son obligatorio");
-        }
-        if (!_nombre) {
-            throw new Error("El nombre es obligatorio");
-        }
+        TipoDedicacionValidator.validate(_nombre, _observacion)
     }
 
     get nombre(): string { return this._nombre }

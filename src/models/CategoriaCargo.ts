@@ -1,13 +1,11 @@
-import { type CategoriaCargoAtributos } from "./types";
+import { type CategoriaCargoAtributos } from "../types";
+import { CategoriaCargoValidator } from "../validators/CategoriaCargoValidator";
 
 export class CategoriaCargo implements CategoriaCargoAtributos {
     constructor(
         private readonly _nombre: string,
     ) {
-
-        if (!_nombre) {
-            throw new Error("El nombre es obligatorio");
-        }
+        CategoriaCargoValidator.validate(_nombre)
     }
 
     get nombre(): string { return this._nombre }

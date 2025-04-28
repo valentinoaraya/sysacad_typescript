@@ -1,16 +1,12 @@
-import { type UniversidadAtributos } from "./types";
+import { type UniversidadAtributos } from "../types";
+import { UniversidadValidator } from "../validators/UniversidadValidator";
 
 export class Universidad implements UniversidadAtributos {
     constructor(
         private readonly _nombre: string,
         private readonly _sigla: string
     ) {
-        if (!_nombre) {
-            throw new Error("El nombre es obligatorio");
-        }
-        if (!_sigla) {
-            throw new Error("La sigla es obligatoria");
-        }
+        UniversidadValidator.validate(_nombre, _sigla)
     }
 
     get nombre(): string { return this._nombre }

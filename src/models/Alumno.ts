@@ -1,4 +1,5 @@
-import { type AlumnosAtributos, type tipoDocumento, type sexo } from "./types";
+import { type AlumnosAtributos, type tipoDocumento, type sexo } from "../types";
+import { AlumnoValidator } from "../validators/AlumnoValidator";
 
 export class Alumno implements AlumnosAtributos {
     constructor(
@@ -11,21 +12,16 @@ export class Alumno implements AlumnosAtributos {
         private readonly _nroLegajo: number,
         private readonly _fechaIngreso: Date,
     ) {
-
-        if (!_apellido || !_nombre) {
-            throw new Error("El apellido y nombre son obligatorios");
-        }
-        if (!_nroDocumento) {
-            throw new Error("El número de documento es obligatorio");
-        }
-        if (_nroLegajo <= 0) {
-            throw new Error("El número de legajo debe ser positivo");
-        }
-
-        const fechaNacimiento = new Date(_fechaNacimiento);
-        if (isNaN(fechaNacimiento.getTime())) {
-            throw new Error("La fecha de nacimiento no es válida");
-        }
+        AlumnoValidator.validate(
+            _apellido,
+            _nombre,
+            _nroDocumento,
+            _tipoDocumento,
+            _fechaNacimiento,
+            _sexo,
+            _nroLegajo,
+            _fechaIngreso
+        )
     }
 
     get nombre(): string { return this._nombre }

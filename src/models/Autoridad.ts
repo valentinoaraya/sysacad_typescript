@@ -1,4 +1,5 @@
-import { type CargoAtributos, type AutoridadAtributos } from "./types";
+import { type CargoAtributos, type AutoridadAtributos } from "../types";
+import { AutoridadValidator } from "../validators/AutoridadValidator";
 
 export class Autoridad implements AutoridadAtributos {
     constructor(
@@ -8,19 +9,7 @@ export class Autoridad implements AutoridadAtributos {
         private readonly _telefono: string,
         private readonly _email: string,
     ) {
-
-        if (!_apellido || !_nombre) {
-            throw new Error("El apellido y nombre son obligatorios");
-        }
-        if (!_cargo) {
-            throw new Error("El cargo es obligatorio");
-        }
-        if (_telefono) {
-            throw new Error("El telefono es obligatorio");
-        }
-        if (_email) {
-            throw new Error("El email o correo electrónico es obligatorio");
-        }
+        AutoridadValidator.validate(_apellido, _nombre, _cargo, _telefono, _email)
     }
 
     get nombre(): string { return this._nombre }

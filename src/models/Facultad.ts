@@ -1,4 +1,5 @@
-import { type FacultadAtributos } from "./types";
+import { type FacultadAtributos } from "../types";
+import { FacultadValidator } from "../validators/FacultadValidator";
 
 export class Facultad implements FacultadAtributos {
     constructor(
@@ -13,11 +14,18 @@ export class Facultad implements FacultadAtributos {
         private readonly _contacto: string,
         private readonly _email: string,
     ) {
-        if (!_nombre) throw new Error("El nombre es obligatorio");
-        if (!_abreviatura) throw new Error("La abreviatura es obligatoria");
-        if (!_sigla) throw new Error("La sigla es obligatoria");
-        if (!_ciudad) throw new Error("La ciudad es obligatoria");
-        if (!_domicilio) throw new Error("El domicilio es obligatorio");
+        FacultadValidator.validate(
+            _nombre,
+            _abreviatura,
+            _directorio,
+            _sigla,
+            _codigoPostal,
+            _ciudad,
+            _domicilio,
+            _telefono,
+            _contacto,
+            _email,
+        )
     }
 
     get nombre(): string { return this._nombre; }

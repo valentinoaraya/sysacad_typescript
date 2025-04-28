@@ -1,4 +1,5 @@
-import { type CategoriaCargoAtributos, type CargoAtributos, type TipoDedicacionAtributos } from "./types";
+import { type CategoriaCargoAtributos, type CargoAtributos, type TipoDedicacionAtributos } from "../types";
+import { CargoValidator } from "../validators/CargoValidator";
 
 export class Cargo implements CargoAtributos {
     constructor(
@@ -7,19 +8,7 @@ export class Cargo implements CargoAtributos {
         private readonly _categoriaCargo: CategoriaCargoAtributos,
         private readonly _tipoDedicacion: TipoDedicacionAtributos,
     ) {
-
-        if (!_puntos) {
-            throw new Error("El puntaje es obligatorio.");
-        }
-        if (!_nombre) {
-            throw new Error("El nombre es obligatorio.");
-        }
-        if (!_categoriaCargo) {
-            throw new Error("La categoria del cargo es obligatoria.");
-        }
-        if (!_tipoDedicacion) {
-            throw new Error("El tipo de dedicacion es obligatorio.");
-        }
+        CargoValidator.validate(_nombre, _puntos, _categoriaCargo, _tipoDedicacion)
     }
 
     get nombre(): string { return this._nombre }

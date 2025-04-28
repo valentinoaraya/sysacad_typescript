@@ -1,4 +1,5 @@
-import { type EspecialidadAtributos } from "./types";
+import { type EspecialidadAtributos } from "../types";
+import { EspecialidadValidator } from "../validators/EspecialidadValidator";
 
 export class Especialidad implements EspecialidadAtributos {
     constructor(
@@ -6,15 +7,7 @@ export class Especialidad implements EspecialidadAtributos {
         private readonly _letra: string,
         private readonly _observacion: string
     ) {
-        if (!_nombre) {
-            throw new Error('El nombre es obligatorio')
-        }
-        if (!_letra) {
-            throw new Error('La letra es obligatorio')
-        }
-        if (!_observacion) {
-            throw new Error('La observacion es obligatoria')
-        }
+        EspecialidadValidator.validate(_nombre, _letra, _observacion)
     }
     get nombre(): string { return this._nombre }
     get letra(): string { return this._letra }
