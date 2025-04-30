@@ -92,11 +92,3 @@ export interface PlanAtributos {
     fechaFin : string;
     observacion : string;
 }
-
-export interface AreaAtributos {
-    nombre: string;
-}
-
-export interface GrupoAtributos {
-    nombre: string;
-}
