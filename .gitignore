@@ -14,3 +14,5 @@ yarn-error.log*
 
 # Coverage (si usás testing)
 coverage/
+
+.env
