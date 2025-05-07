@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "Rediseño del sistema académico SysAcad con TypeScript para la materia Desarrollo de Software. Utilizando metodología TDD (Testing Driven Development) y buenas prácticas como SOLID, KISS, YAGNI y DRY.",
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.14.1",
     "jest": "^29.7.0",
@@ -29,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/valentinoaraya/sysacad_typescript/issues"
   },
-  "homepage": "https://github.com/valentinoaraya/sysacad_typescript#readme"
+  "homepage": "https://github.com/valentinoaraya/sysacad_typescript#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
 }
