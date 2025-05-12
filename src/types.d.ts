@@ -28,6 +28,7 @@ export interface FacultadAtributos {
 export interface UniversidadAtributos {
     nombre: string;
     sigla: string;
+    id?: number;
 }
 
 export interface CargoAtributos {

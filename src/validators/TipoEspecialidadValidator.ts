@@ -1,6 +1,6 @@
 import { BaseValidator } from "./BaseValidator";
 
-export class TipoEspecialidadVlaidator extends BaseValidator {
+export class TipoEspecialidadValidator extends BaseValidator {
     static validate(
         nombre: string,
         nivel: string

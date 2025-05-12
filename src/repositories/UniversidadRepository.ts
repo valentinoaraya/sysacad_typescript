@@ -1,7 +1,21 @@
-import { UniversidadAtributos } from "../types";
+import { Universidad } from "../models/Universidad";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export class UniversidadRepository {
-    static crear(universidad: UniversidadAtributos) {
-        // TODO implementar Prisma y crear el test
+    static async crear(universidad: Universidad): Promise<Universidad> {
+        const universidadCreada = await prisma.universidad.create({
+            data: {
+                nombre: universidad.nombre,
+                sigla: universidad.sigla,
+            },
+        });
+
+        return new Universidad(
+            universidadCreada.nombre,
+            universidadCreada.sigla,
+            universidadCreada.id
+        );
     }
 }
