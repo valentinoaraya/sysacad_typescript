@@ -1,12 +1,12 @@
 import { UniversidadRepository } from "../repositories/UniversidadRepository";
-import { Universidad } from "../models/Universidad";
+import { UniversidadAtributos } from "../types";
 
 export class UniversidadService {
-    static crearUniversidad(universidad: Universidad): Promise<Universidad> {
+    static crearUniversidad(universidad: UniversidadAtributos): Promise<UniversidadAtributos> {
         return UniversidadRepository.crear(universidad);
     }
-    static obtenerUniversidadPorId(id: number): Promise<Universidad | null> {
+    static obtenerUniversidadPorId(id: number): Promise<UniversidadAtributos | null> {
         return UniversidadRepository.buscarPorId(id);
     }
-    
+
 }
