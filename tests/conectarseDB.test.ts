@@ -7,6 +7,6 @@ test("debería conectarse a la base de datos sin errores", async () => {
         throw new Error(`Error de conexión: ${error}`);
 
     } finally {
-        await prisma.$disconnect();
+        await globalThis.prisma.$disconnect();
     }
 })
