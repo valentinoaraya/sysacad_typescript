@@ -49,4 +49,10 @@ export class UniversidadRepository {
         }
     }
 
+    static async eliminar(id:number):Promise<void>{
+        await prisma.universidades.delete({
+            where:{id},
+        });
+    }
+
 }

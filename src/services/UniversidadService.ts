@@ -15,4 +15,7 @@ export class UniversidadService {
         return UniversidadRepository.actualizar(id, nuevosDatos)
     }
 
+    static eliminarUniversidad(id:number):Promise<void> {
+        return UniversidadRepository.eliminar(id);
+    }
 }
