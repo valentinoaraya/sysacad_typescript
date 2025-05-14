@@ -11,4 +11,11 @@ export class Universidad implements UniversidadAtributos {
 
     get nombre(): string { return this._nombre }
     get sigla(): string { return this._sigla }
+
+    toPlainObject(): UniversidadAtributos {
+        return {
+            nombre: this.nombre,
+            sigla: this.sigla,
+        };
+    }
 }
