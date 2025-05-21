@@ -14,10 +14,10 @@ datasource db {
 }
 
 model Usuarios {
-  id        Int      @id @default(autoincrement())
-  nombre    String
-  email     String   @unique
-  creadoEn  DateTime @default(now())
+  id       Int      @id @default(autoincrement())
+  nombre   String
+  email    String   @unique
+  creadoEn DateTime @default(now())
 }
 
 model Universidades {
