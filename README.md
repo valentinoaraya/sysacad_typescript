@@ -9,3 +9,4 @@ Rediseño del sistema académico SysAcad con TypeScript para la materia Desarrol
 - Faustino Durán
 - Tomás Romero
 - Valentino Araya 
+- Ignacio Patiño
