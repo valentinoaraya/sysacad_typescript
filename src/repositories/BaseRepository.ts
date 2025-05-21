@@ -29,6 +29,10 @@ export abstract class BaseRepository<T> {
 
     async actualizar(id: number, nuevosDatos: Partial<T>): Promise<T> {
         try {
+            if ('id' in nuevosDatos) {
+                throw new Error('No se puede actualizar el campo id');
+            }
+
             const entidadActualizada = await this.model.update({
                 where: { id },
                 data: nuevosDatos,
