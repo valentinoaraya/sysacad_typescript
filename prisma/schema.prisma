@@ -25,3 +25,43 @@ model Universidades {
   nombre String
   sigla  String
 }
+
+
+
+model Especialidad {
+  id            Int    @id @default(autoincrement())
+  nombre        String
+  letra         String
+  observacion   String
+  orientaciones Orientacion[]   
+}
+
+model Plan {
+  id            Int   @id @default(autoincrement())
+  nombre        String
+  fechaInicio   String
+  fechaFin      String
+  observacion   String
+  orientaciones Orientacion[]
+}
+
+model Materia {
+  id            Int @id @default(autoincrement())
+  nombre        String
+  codigo        String
+  observacion   String
+  orientaciones Orientacion[]
+}
+
+model Orientacion {
+  id      Int    @id @default(autoincrement())
+  nombre  String
+
+  especialidad  Especialidad          @relation(fields:[especialidadId], references: [id])
+  especialidadId  Int
+  plan          Plan                  @relation(fields:[planId], references: [id])
+  planId          Int
+  materia       Materia               @relation(fields:[materiaId], references: [id])
+  materiaId       Int
+}
+

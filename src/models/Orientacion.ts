@@ -1,3 +1,4 @@
+import { connect } from "http2";
 import { type OrientacionAtributos, type EspecialidadAtributos, type PlanAtributos, type MateriaAtributos } from "../types";
 import { OrientacionValidator } from "../validators/OrientacionValidator";
 
@@ -15,4 +16,13 @@ export class Orientacion implements OrientacionAtributos {
     get especialidad(): EspecialidadAtributos { return this._especialidad }
     get plan(): PlanAtributos { return this._plan }
     get materia(): MateriaAtributos { return this._materia }
+
+    toPlainObject() {
+        return {
+            nombre : this.nombre,
+            especialidad : {connect : { id : this.especialidad.id}},
+            plan : {connect : { id : this.plan.id}},
+            materia : {connect : { id: this.materia.id}}
+        };
+    }
 }
