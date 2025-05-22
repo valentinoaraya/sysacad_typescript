@@ -59,6 +59,7 @@ export interface EspecialidadAtributos {
     nombre: string;
     letra: string;
     observacion: string;
+    id?: number;
 }
 
 export interface OrientacionAtributos {
@@ -66,6 +67,7 @@ export interface OrientacionAtributos {
     especialidad: EspecialidadAtributos;
     plan: PlanAtributos;
     materia: MateriaAtributos;
+    id?: number;
 }
 
 export interface GradoAtributos {
@@ -76,6 +78,7 @@ export interface MateriaAtributos {
     nombre: string;
     codigo: string;
     observacion: string;
+    id?: number;
 }
 
 export interface DepartamentoAtributos {
@@ -92,4 +95,5 @@ export interface PlanAtributos {
     fechaInicio : string;
     fechaFin : string;
     observacion : string;
+    id?: number;
 }
