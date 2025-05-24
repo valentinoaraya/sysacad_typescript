@@ -1,7 +1,8 @@
 import { PlanService } from "../src/services/PlanService"
-import { plan } from "../src/utils"
+import { crearPlanEjemplo } from "../src/utils";
 
 test("Deberia crear un plan en la base de datos y actualizar el campo nombre" , async ()=> {
+    const plan = await crearPlanEjemplo();
     const planCreado = await PlanService.crearPlan(plan);
     const nuevosDatosPlan = {
         nombre : "2025"

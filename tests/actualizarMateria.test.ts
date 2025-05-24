@@ -1,7 +1,8 @@
 import { MateriaService } from "../src/services/MateriaService"
-import { materia } from "../src/utils"
+import { crearMateriaEjemplo } from "../src/utils";
 
 test("Deberia crear una materia en la base de datos y actualizar el campo nombre" , async ()=> {
+    const materia = await crearMateriaEjemplo();
     const materiaCreada = await MateriaService.crearMateria(materia);
     const nuevosDatosMateria = {
         nombre : "Desarrollo de software"

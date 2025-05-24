@@ -1,7 +1,8 @@
 import { PlanService } from "../src/services/PlanService"
-import { plan } from "../src/utils"
+import { crearPlanEjemplo } from "../src/utils";
 
 test("Deberia eliminar un plan por el ID en la base de datos", async ()=>{
+    const plan = await crearPlanEjemplo();
     const planBD = await PlanService.crearPlan(plan);
     
     await PlanService.eliminarPlan(planBD.id as number);
