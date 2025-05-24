@@ -1,7 +1,8 @@
 import { PlanService } from "../src/services/PlanService"
-import { plan } from "../src/utils"
+import { crearPlanEjemplo } from "../src/utils";
 
 test("Deberia crear y guardad un plan en la base de datos", async ()=>{
+    const plan = await crearPlanEjemplo();
     const planCreado = await PlanService.crearPlan(plan);
     const planBD = await globalThis.prisma.plan.findUnique({
         where : {id: planCreado.id},
