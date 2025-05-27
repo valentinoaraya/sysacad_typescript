@@ -28,7 +28,7 @@ model Universidades {
 
 
 
-model Especialidad {
+model Especialidades {
   id            Int    @id @default(autoincrement())
   nombre        String
   letra         String
@@ -36,7 +36,7 @@ model Especialidad {
   orientaciones Orientacion[]   
 }
 
-model Plan {
+model Planes {
   id            Int   @id @default(autoincrement())
   nombre        String
   fechaInicio   String
@@ -45,7 +45,7 @@ model Plan {
   orientaciones Orientacion[]
 }
 
-model Materia {
+model Materias {
   id            Int @id @default(autoincrement())
   nombre        String
   codigo        String
@@ -53,7 +53,7 @@ model Materia {
   orientaciones Orientacion[]
 }
 
-model Orientacion {
+model Orientaciones {
   id      Int    @id @default(autoincrement())
   nombre  String
 
