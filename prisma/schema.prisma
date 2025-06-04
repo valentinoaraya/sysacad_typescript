@@ -26,18 +26,16 @@ model Universidades {
   sigla  String
 }
 
-
-
 model Especialidades {
-  id            Int    @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   nombre        String
   letra         String
   observacion   String
-  orientaciones Orientacion[]   
+  orientaciones Orientacion[]
 }
 
 model Planes {
-  id            Int   @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   nombre        String
   fechaInicio   String
   fechaFin      String
@@ -46,7 +44,7 @@ model Planes {
 }
 
 model Materias {
-  id            Int @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   nombre        String
   codigo        String
   observacion   String
@@ -54,14 +52,13 @@ model Materias {
 }
 
 model Orientaciones {
-  id      Int    @id @default(autoincrement())
-  nombre  String
+  id     Int    @id @default(autoincrement())
+  nombre String
 
-  especialidad  Especialidad          @relation(fields:[especialidadId], references: [id])
-  especialidadId  Int
-  plan          Plan                  @relation(fields:[planId], references: [id])
-  planId          Int
-  materia       Materia               @relation(fields:[materiaId], references: [id])
-  materiaId       Int
+  especialidad   Especialidad @relation(fields: [especialidadId], references: [id])
+  especialidadId Int
+  plan           Plan         @relation(fields: [planId], references: [id])
+  planId         Int
+  materia        Materia      @relation(fields: [materiaId], references: [id])
+  materiaId      Int
 }
-
