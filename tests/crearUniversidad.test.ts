@@ -1,7 +1,7 @@
 import { Universidad } from "../src/models/Universidad";
 import { UniversidadService } from "../src/services/UniversidadService";
 
-test('deberia crear y gurdar una universidad en la abse de datos', async () => {
+test('deberia crear y gurdar una universidad en la base de datos', async () => {
     const nuevaUniversidad = new Universidad(
         "Universidad Tecnologica Nacional",
         "UTN"
