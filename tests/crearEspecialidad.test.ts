@@ -1,11 +1,11 @@
 import { EspecialidadService } from "../src/services/EspecialidadService"
 import { crearEspecialidadEjemeplo } from "../src/utils";
 
-test("Deberia crear y guardad una especialidad en la base de datos", async () =>{
+test("Deberia crear y guardad una especialidad en la base de datos", async () => {
     const especialidad = await crearEspecialidadEjemeplo();
     const especialidadCreada = await EspecialidadService.crearEspecialidad(especialidad);
     const especialidadBD = await globalThis.prisma.especialidades.findUnique({
-        where : {id : especialidadCreada.id},
+        where: { id: especialidadCreada.id },
     });
 
     expect(especialidadBD).toBeTruthy();

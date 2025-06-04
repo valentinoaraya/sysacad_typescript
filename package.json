@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "test": "npx jest --runInBand"
+    "test": "npx jest --runInBand",
+    "clear-db": "ts-node src/utils/limpiarDB.ts"
   },
   "keywords": [],
   "author": "",
