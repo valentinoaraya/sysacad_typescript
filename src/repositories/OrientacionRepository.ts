@@ -4,5 +4,5 @@ import { BaseRepository } from "./BaseRepository";
 
 const prisma = new PrismaClient();
 export class OrientacionRepository extends BaseRepository <OrientacionAtributos> {
-    protected readonly model = prisma.orientacion;
+    protected readonly model = prisma.orientaciones;
 }

@@ -18,7 +18,7 @@ test("Deberia crear y guardas una orientacion en la base de datos", async () => 
 
     const orientacionCreada = await OrientacionService.crearOrientacion(orientacion);
 
-    const orientacionBD = await globalThis.prisma.orientacion.findUnique({
+    const orientacionBD = await globalThis.prisma.orientaciones.findUnique({
         where: { id: orientacionCreada.id },
     });
 
