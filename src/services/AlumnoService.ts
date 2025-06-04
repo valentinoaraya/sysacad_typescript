@@ -1,17 +1,18 @@
 import { AlumnoRepository } from "../repositories/AlumnoRepository";
-import { AlumnosAtributos } from "../types";
-export class EspecialidadService {
+import { AlumnoAtributos } from "../types";
+
+export class AlumnoService {
     private static readonly AlumnoRepository = new AlumnoRepository();
 
-    static crearAlumno(alumno: AlumnosAtributos): Promise<AlumnosAtributos> {
+    static crearAlumno(alumno: AlumnoAtributos): Promise<AlumnoAtributos> {
         return this.AlumnoRepository.crear(alumno);
     }
 
-    static obtenerAlumnoPorLegajo(nroLegajo: number): Promise<AlumnosAtributos | null> {
+    static obtenerAlumnoPorLegajo(nroLegajo: number): Promise<AlumnoAtributos | null> {
         return this.AlumnoRepository.buscarPorId(nroLegajo);
     }
 
-    static actualizarAlumno(nroLegajo: number, nuevosDatos: Partial<AlumnosAtributos>): Promise<AlumnosAtributos> {
+    static actualizarAlumno(nroLegajo: number, nuevosDatos: Partial<AlumnoAtributos>): Promise<AlumnoAtributos> {
         return this.AlumnoRepository.actualizar(nroLegajo, nuevosDatos);
     }
 

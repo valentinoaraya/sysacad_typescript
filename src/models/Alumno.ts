@@ -1,7 +1,7 @@
-import { type AlumnosAtributos, type tipoDocumento, type sexo } from "../types";
+import { type AlumnoAtributos, type tipoDocumento, type sexo } from "../types";
 import { AlumnoValidator } from "../validators/AlumnoValidator";
 
-export class Alumno implements AlumnosAtributos {
+export class Alumno implements AlumnoAtributos {
     constructor(
         private readonly _apellido: string,
         private readonly _nombre: string,
@@ -24,12 +24,24 @@ export class Alumno implements AlumnosAtributos {
         )
     }
 
-    get nombre(): string { return this._nombre }
     get apellido(): string { return this._apellido }
+    get nombre(): string { return this._nombre }
     get nroDocumento(): string { return this._nroDocumento }
     get nroLegajo(): number { return this._nroLegajo }
     get tipoDocumento(): tipoDocumento { return this._tipoDocumento }
     get fechaIngreso(): Date { return this._fechaIngreso }
     get sexo(): sexo { return this._sexo }
     get fechaNacimiento(): string { return this._fechaNacimiento }
-}
+
+    toPlainObject(): AlumnoAtributos {
+            return {
+                apellido: this.apellido,
+                nombre: this.nombre,
+                nroDocumento: this.nroDocumento,
+                nroLegajo: this.nroLegajo,
+                tipoDocumento: this.tipoDocumento,
+                fechaIngreso: this.fechaIngreso,
+                sexo: this.sexo,
+                fechaNacimiento: this.fechaNacimiento
+            };
+}}

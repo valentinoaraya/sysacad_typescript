@@ -1,7 +1,7 @@
 export type sexo = "M" | "F";
 export type tipoDocumento = "DNI" | "LibretaCivica" | "LibretaEnrolamiento" | "Pasaporte"
 
-export interface AlumnosAtributos {
+export interface AlumnoAtributos {
     apellido: string;
     nombre: string;
     nroDocumento: string;
