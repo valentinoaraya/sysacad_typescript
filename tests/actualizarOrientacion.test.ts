@@ -1,27 +1,12 @@
-import { OrientacionService} from "../src/services/OrientacionService";
-import { Orientacion } from "../src/models/Orientacion";
-import { crearEspecialidadEjemeplo } from "../src/utils"
-import { crearMateriaEjemplo } from "../src/utils";
-import { crearPlanEjemplo } from "../src/utils";
+import { OrientacionService } from "../src/services/OrientacionService";
+import { instanciaOrientacion as orientacion } from "./utils";
 
-
-
-test("Deberia crear una clase Orientacion y luego actualizar su campo nombre" , async () => {
-
-    const especialidad = await crearEspecialidadEjemeplo();
-    const materia = await crearMateriaEjemplo();
-    const plan = await crearPlanEjemplo();
-    const orientacion = new Orientacion(
-        "Ingeniería de Software",
-        especialidad,
-        plan,
-        materia
-    );
+test("Deberia crear una clase Orientacion y luego actualizar su campo nombre", async () => {
 
     const orientacionCreada = await OrientacionService.crearOrientacion(orientacion)
 
     const nuevosDatosOrientacion = {
-        nombre : "Ing"
+        nombre: "Ing"
     }
     const orientacionActualizada = await OrientacionService.actualizarOrientacion(orientacionCreada.id as number, nuevosDatosOrientacion)
 

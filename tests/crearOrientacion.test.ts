@@ -1,8 +1,5 @@
 import { OrientacionService } from "../src/services/OrientacionService";
 import { Orientacion } from "../src/models/Orientacion";
-import { crearEspecialidadEjemeplo } from "../src/utils"
-import { crearMateriaEjemplo } from "../src/utils";
-import { crearPlanEjemplo } from "../src/utils";
 
 test("Deberia crear y guardas una orientacion en la base de datos", async () => {
 
