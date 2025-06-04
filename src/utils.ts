@@ -13,35 +13,35 @@ import { Orientacion } from "./models/Orientacion";
 
 export async function crearEspecialidadEjemeplo() {
     const especialidad = await globalThis.prisma.especialidad.create({
-    data: {
-        nombre: "Informática",
-        letra: "A",
-        observacion: "Especialidad de ejemplo"
+        data: {
+            nombre: "Informática",
+            letra: "A",
+            observacion: "Especialidad de ejemplo"
         },
     });
-    return new Especialidad( especialidad.nombre,especialidad.letra,especialidad.observacion,especialidad.id)
+    return new Especialidad(especialidad.nombre, especialidad.letra, especialidad.observacion, especialidad.id)
 }
-export async function crearPlanEjemplo(){
+export async function crearPlanEjemplo() {
     const plan = await globalThis.prisma.plan.create({
-    data: {
-        nombre: "2025",
-        fechaInicio: "2025-01-01",
-        fechaFin: "2030-01-01",
-        observacion: "Plan de ejemplo"
+        data: {
+            nombre: "2025",
+            fechaInicio: "2025-01-01",
+            fechaFin: "2030-01-01",
+            observacion: "Plan de ejemplo"
         }
     });
-    return new Plan(plan.nombre,plan.fechaInicio,plan.fechaFin,plan.observacion,plan.id)
+    return new Plan(plan.nombre, plan.fechaInicio, plan.fechaFin, plan.observacion, plan.id)
 }
 
-export async function crearMateriaEjemplo(){
+export async function crearMateriaEjemplo() {
     const materia = await globalThis.prisma.materia.create({
-    data: {
-        nombre: "Desarrollo de software",
-        codigo: "MD101",
-        observacion: "Materia de ejemplo"
+        data: {
+            nombre: "Desarrollo de software",
+            codigo: "MD101",
+            observacion: "Materia de ejemplo"
         }
     });
-    return new Materia(materia.nombre,materia.codigo,materia.observacion,materia.id)
+    return new Materia(materia.nombre, materia.codigo, materia.observacion, materia.id)
 }
 
 // const especialidadModel = new Especialidad(
