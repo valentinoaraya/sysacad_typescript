@@ -1,18 +1,6 @@
-import { Facultad } from "../src/models/Facultad"
+import { instanciaFacultad as facultad } from "./utils"
 
 test("debería crear instancia de la clase facultad y leer sus atributos", () => {
-    const facultad = new Facultad(
-        "Facultad Regional de San Rafael",
-        "FRSR",
-        "Facultad de Ingeniería",
-        "FRSR",
-        "5600",
-        "San Rafael",
-        "Urquiza 314",
-        "02604421078",
-        "Ing. Roberto D. Vilches",
-        "rvilches@frsr.utn.edu.ar",
-    )
 
     expect(facultad).toBeTruthy()
     expect(facultad.nombre).toBe("Facultad Regional de San Rafael")

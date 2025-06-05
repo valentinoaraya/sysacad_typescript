@@ -1,11 +1,6 @@
-import { Especialidad  } from "../src/models/Especialidad";
+import { instanciaEspecialidad as especialidad } from "./utils"
 
 test('deberia de crear una instancia de la clase Especialidad y leer sus atributos', () => {
-    const especialidad = new Especialidad(
-        "Ingenieria en sistemas", 
-        "A",
-        "Existe la ingenieria"
-    );
 
     expect(especialidad).toBeTruthy()
     expect(especialidad.nombre).toBe("Ingenieria en sistemas")
