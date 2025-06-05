@@ -5,7 +5,7 @@ test("debería crear instancia de la clase facultad y leer sus atributos", () =>
     expect(facultad).toBeTruthy()
     expect(facultad.nombre).toBe("Facultad Regional de San Rafael")
     expect(facultad.abreviatura).toBe("FRSR")
-    expect(facultad.directorio).toBe("Facultad de Ingeniería")
+    expect(facultad.directorio).toBe("Facultad de ingeniería")
     expect(facultad.sigla).toBe("FRSR")
     expect(facultad.ciudad).toBe("San Rafael")
     expect(facultad.codigoPostal).toBe("5600")

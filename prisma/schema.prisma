@@ -68,7 +68,7 @@ model Alumnos {
   nombre          String
   nroDocumento    String
   tipoDocumento   String
-  fechanacimiento String
+  fechaNacimiento String
   sexo            String
   nroLegajo       Int      @id
   fechaIngreso    DateTime

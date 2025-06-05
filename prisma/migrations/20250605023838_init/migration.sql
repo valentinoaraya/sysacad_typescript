@@ -1,32 +1,21 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "Usuarios" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "creadoEn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-  - You are about to drop the `Especialidad` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Materia` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Orientacion` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Plan` table. If the table is not empty, all the data it contains will be lost.
+    CONSTRAINT "Usuarios_pkey" PRIMARY KEY ("id")
+);
 
-*/
--- DropForeignKey
-ALTER TABLE "Orientacion" DROP CONSTRAINT "Orientacion_especialidadId_fkey";
+-- CreateTable
+CREATE TABLE "Universidades" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "sigla" TEXT NOT NULL,
 
--- DropForeignKey
-ALTER TABLE "Orientacion" DROP CONSTRAINT "Orientacion_materiaId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Orientacion" DROP CONSTRAINT "Orientacion_planId_fkey";
-
--- DropTable
-DROP TABLE "Especialidad";
-
--- DropTable
-DROP TABLE "Materia";
-
--- DropTable
-DROP TABLE "Orientacion";
-
--- DropTable
-DROP TABLE "Plan";
+    CONSTRAINT "Universidades_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "Especialidades" (
@@ -69,6 +58,23 @@ CREATE TABLE "Orientaciones" (
 
     CONSTRAINT "Orientaciones_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateTable
+CREATE TABLE "Alumnos" (
+    "apellido" TEXT NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "nroDocumento" TEXT NOT NULL,
+    "tipoDocumento" TEXT NOT NULL,
+    "fechaNacimiento" TEXT NOT NULL,
+    "sexo" TEXT NOT NULL,
+    "nroLegajo" INTEGER NOT NULL,
+    "fechaIngreso" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Alumnos_pkey" PRIMARY KEY ("nroLegajo")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Usuarios_email_key" ON "Usuarios"("email");
 
 -- AddForeignKey
 ALTER TABLE "Orientaciones" ADD CONSTRAINT "Orientaciones_especialidadId_fkey" FOREIGN KEY ("especialidadId") REFERENCES "Especialidades"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

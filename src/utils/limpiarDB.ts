@@ -12,6 +12,9 @@ export async function limpiarBaseDeDatos() {
         await prisma.usuarios.deleteMany({});
         console.log('Tabla Usuarios limpiada');
 
+        await prisma.alumnos.deleteMany({})
+        console.log('Tabla Alumnos limpiada');
+
         await prisma.universidades.deleteMany({});
         console.log('Tabla Universidades limpiada');
 

@@ -91,7 +91,7 @@ export const instanciaPlan = new Plan(
 )
 
 export const instanciaOrientacion = new Orientacion(
-    "Ingeniría",
+    "Ingeniería",
     instanciaEspecialidad,
     instanciaPlan,
     instanciaMateria

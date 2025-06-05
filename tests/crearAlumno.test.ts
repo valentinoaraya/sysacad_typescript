@@ -1,14 +1,19 @@
-import { AlumnoService } from "../src/services/EspecialidadService"
+import { AlumnoService } from "../src/services/AlumnoService"
+import { instanciaAlumno as alumno } from "./utils";
 
-test("Deberia crear y guardad un alumno en la base de datos", async () => {
-    const alumno = await crearAlumnoEjemplo();
-    const alumnoCreado = await AlumnoService.crearEspecialidad(alumno);
-    const alumnoBD = await globalThis.prisma.alumnos.findUnique({
-        where: { id: alumnoCreado.id },
-    });
+test('deberia crear y gurdar un alumno en la base de datos', async () => {
 
-    expect(alumnoBD).toBeTruthy();
-    expect(alumnoBD?.nombre).toBe(alumno.nombre);
-    expect(alumnoBD?.letra).toBe(alumno.letra);
-    expect(alumnoBD?.observacion).toBe(alumno.observacion);
+    const alumnoCreado = await AlumnoService.crearAlumno(alumno);
+    const alumnoDB = await globalThis.prisma.alumnos.findUnique({
+        where: { nroLegajo: alumnoCreado.nroLegajo },
+    })
+
+    expect(alumnoDB).toBeTruthy();
+    expect(alumnoDB?.apellido).toBe(alumno.apellido);
+    expect(alumnoDB?.nombre).toBe(alumno.nombre);
+    expect(alumnoDB?.nroDocumento).toBe(alumno.nroDocumento);
+    expect(alumnoDB?.fechaNacimiento).toBe(alumno.fechaNacimiento);
+    expect(alumnoDB?.sexo).toBe(alumno.sexo);
+    expect(alumnoDB?.nroLegajo).toBe(alumno.nroLegajo);
+    expect(alumnoDB?.fechaIngreso).toStrictEqual(alumno.fechaIngreso);
 })
