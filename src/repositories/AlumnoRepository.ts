@@ -6,4 +6,5 @@ const prisma = new PrismaClient();
 
 export class AlumnoRepository extends BaseRepository<AlumnoAtributos> {
     protected readonly model = prisma.alumnos
+    protected readonly includes?: any;
 }

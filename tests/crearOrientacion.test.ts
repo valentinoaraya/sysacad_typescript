@@ -1,20 +1,17 @@
 import { OrientacionService } from "../src/services/OrientacionService";
-import { instanciaOrientacion as orientacion } from "./utils";
+import { crearInstanciaOrientacion } from "./utils";
 
 test("Deberia crear y guardas una orientacion en la base de datos", async () => {
 
+    const orientacion = await crearInstanciaOrientacion()
+
     const orientacionCreada = await OrientacionService.crearOrientacion(orientacion);
 
-    const orientacionBD = await globalThis.prisma.orientaciones.findUnique({
-        where: { id: orientacionCreada.id },
-    });
+    const orientacionBD = await OrientacionService.obtenerOrientacionPorId(orientacionCreada.id as number)
 
     expect(orientacionBD).toBeTruthy();
     expect(orientacionBD?.nombre).toBe(orientacion.nombre);
-
-    // TODO: Terminar de implementar estos tests
-
-    //expect(orientacionBD?.especialidadId).toEqual(especialidad.id);
-    //expect(orientacionBD?.planId).toEqual(plan.id);
-    //expect(orientacionBD?.materiaId).toEqual(materia.id);
+    expect(orientacionBD?.especialidad.id).toBe(orientacion.especialidad.id);
+    expect(orientacionBD?.plan.id).toBe(orientacion.plan.id);
+    expect(orientacionBD?.materia.id).toBe(orientacion.materia.id);
 });

@@ -6,4 +6,5 @@ const prisma = new PrismaClient();
 
 export class PlanRepository extends BaseRepository<PlanAtributos> {
     protected readonly model = prisma.planes
+    protected readonly includes?: any;
 }

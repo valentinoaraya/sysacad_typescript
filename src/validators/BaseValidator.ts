@@ -35,9 +35,9 @@ export class BaseValidator {
         }
     }
 
-    protected static validateInstance<T>(value: any, fieldName: string, expectedType: new (...args: any[]) => T): void {
-        if (!(value instanceof expectedType)) {
-            throw new Error(`El campo ${fieldName} debe ser una instancia de ${expectedType.name}`);
+    protected static validateType<T extends object>(value: any, fieldName: string, typeGuard: (value: any) => value is T): void {
+        if (!typeGuard(value)) {
+            throw new Error(`El campo ${fieldName} no cumple con la estructura de tipo esperada`);
         }
     }
 }

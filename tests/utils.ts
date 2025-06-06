@@ -12,6 +12,9 @@ import { Plan } from "../src/models/Plan";
 import { TipoDedicacion } from "../src/models/TipoDedicacion";
 import { TipoEspecialidad } from "../src/models/TipoEspecialidad";
 import { Universidad } from "../src/models/Universidad";
+import { EspecialidadService } from "../src/services/EspecialidadService";
+import { MateriaService } from "../src/services/MateriaService";
+import { PlanService } from "../src/services/PlanService";
 
 const fecha = new Date("2025-07-14")
 
@@ -90,13 +93,6 @@ export const instanciaPlan = new Plan(
     "Funcional",
 )
 
-export const instanciaOrientacion = new Orientacion(
-    "Ingeniería",
-    instanciaEspecialidad,
-    instanciaPlan,
-    instanciaMateria
-)
-
 export const instanciaUniversidad = new Universidad(
     "Universidad Tecnológica Nacional",
     "UTN"
@@ -106,3 +102,13 @@ export const instanciaTipoEspecialidad = new TipoEspecialidad(
     "Seguridad",
     "Correcta"
 )
+
+export const crearInstanciaOrientacion = async () => {
+    const especialidadPersistida = await EspecialidadService.crearEspecialidad(instanciaEspecialidad)
+
+    const planPersistido = await PlanService.crearPlan(instanciaPlan)
+
+    const materiaPersistida = await MateriaService.crearMateria(instanciaMateria)
+
+    return new Orientacion("Ingeniería", especialidadPersistida, planPersistido, materiaPersistida)
+}

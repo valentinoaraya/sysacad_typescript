@@ -1,5 +1,6 @@
 export abstract class BaseRepository<T> {
     protected abstract readonly model: any;
+    protected abstract readonly includes?: any;
 
     async crear(data: T): Promise<T> {
         try {
@@ -10,6 +11,7 @@ export abstract class BaseRepository<T> {
 
             const entidadCreada = await this.model.create({
                 data: dataToPersist,
+                include: this.includes
             });
             return entidadCreada as T;
         } catch (error: any) {
@@ -19,7 +21,10 @@ export abstract class BaseRepository<T> {
 
     async buscarPorId(id: number): Promise<T | null> {
         try {
-            const entidad = await this.model.findUnique({ where: { id } });
+            const entidad = await this.model.findUnique({
+                where: { id },
+                include: this.includes
+            });
             if (!entidad) throw new Error(`No se encontró la entidad con el id ${id}`);
             return entidad;
         } catch (error: any) {
@@ -36,6 +41,7 @@ export abstract class BaseRepository<T> {
             const entidadActualizada = await this.model.update({
                 where: { id },
                 data: nuevosDatos,
+                include: this.includes
             });
             if (!entidadActualizada) throw new Error(`No se encontró la entidad con el id ${id}`);
             return entidadActualizada;

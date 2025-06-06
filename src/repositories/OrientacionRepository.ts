@@ -3,6 +3,11 @@ import { OrientacionAtributos } from "../types";
 import { BaseRepository } from "./BaseRepository";
 
 const prisma = new PrismaClient();
-export class OrientacionRepository extends BaseRepository <OrientacionAtributos> {
+export class OrientacionRepository extends BaseRepository<OrientacionAtributos> {
     protected readonly model = prisma.orientaciones;
+    protected readonly includes = {
+        especialidad: true,
+        plan: true,
+        materia: true
+    };
 }

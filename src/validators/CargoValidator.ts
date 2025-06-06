@@ -1,9 +1,29 @@
-import { CategoriaCargo } from "../models/CategoriaCargo";
-import { TipoDedicacion } from "../models/TipoDedicacion";
 import { type CategoriaCargoAtributos, type TipoDedicacionAtributos } from "../types";
 import { BaseValidator } from "./BaseValidator";
 
 export class CargoValidator extends BaseValidator {
+    private static esCategoriaCargoAtributos = (value: any): value is CategoriaCargoAtributos => {
+        return (
+            typeof value === 'object' &&
+            value !== null &&
+            'nombre' in value &&
+            typeof value.nombre === 'string' &&
+            (!('id' in value) || typeof value.id === 'number')
+        );
+    };
+
+    private static esTipoDedicacionAtributos = (value: any): value is TipoDedicacionAtributos => {
+        return (
+            typeof value === 'object' &&
+            value !== null &&
+            'nombre' in value &&
+            typeof value.nombre === 'string' &&
+            'observacion' in value &&
+            typeof value.observacion === 'string' &&
+            (!('id' in value) || typeof value.id === 'number')
+        );
+    };
+
     static validate(
         nombre: string,
         puntos: number,
@@ -17,7 +37,7 @@ export class CargoValidator extends BaseValidator {
 
         this.validateString(nombre, "nombre")
         this.validateNumber(puntos, "puntos")
-        this.validateInstance(categoriaCargo, "categoriaCargo", CategoriaCargo)
-        this.validateInstance(tipoDedicacion, "tipoDedicacion", TipoDedicacion)
+        this.validateType(categoriaCargo, "categoriaCargo", this.esCategoriaCargoAtributos)
+        this.validateType(tipoDedicacion, "tipoDedicacion", this.esTipoDedicacionAtributos)
     }
 }
