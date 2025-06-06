@@ -1,13 +1,9 @@
-import { TipoDedicacion } from "../src/models/TipoDedicacion";
+import { instanciaTipoDedicacion as tipoDedicacion } from "./utils"
 
 test('deberia de crear una instancia de la clase TIpoDedidacion y leer sus atributos', () => {
-    const tipodedicacion = new TipoDedicacion(
-        "Seguridad",
-        "correcta"
-    )
 
-    expect(tipodedicacion).toBeTruthy()
-    expect(tipodedicacion.nombre).toBe("Seguridad")
-    expect(tipodedicacion.observacion).toBe("correcta")
+    expect(tipoDedicacion).toBeTruthy()
+    expect(tipoDedicacion.nombre).toBe("Administrativo")
+    expect(tipoDedicacion.observacion).toBe("Sin observación")
 })
 

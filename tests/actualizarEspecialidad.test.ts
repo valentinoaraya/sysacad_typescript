@@ -1,11 +1,10 @@
-import {EspecialidadService} from "../src/services/EspecialidadService"
-import { crearEspecialidadEjemeplo } from "../src/utils"
+import { EspecialidadService } from "../src/services/EspecialidadService"
+import { instanciaEspecialidad as especialidad } from "./utils";
 
 test("Deberia crear una especialidad en la base de datos y luego actualizar su campo letra", async () => {
-    const especialidad = await crearEspecialidadEjemeplo();
     const especialidadCreada = await EspecialidadService.crearEspecialidad(especialidad)
     const nuevosDatosEspecialidad = {
-        letra : "A"
+        letra: "A"
     }
     const especialidadActualizada = await EspecialidadService.actualizarEspecialidad(especialidadCreada.id as number, nuevosDatosEspecialidad)
 

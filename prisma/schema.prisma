@@ -27,15 +27,15 @@ model Universidades {
 }
 
 model Especialidades {
-  id            Int    @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   nombre        String
   letra         String
   observacion   String
-  orientaciones Orientaciones[]   
+  orientaciones Orientaciones[]
 }
 
 model Planes {
-  id            Int   @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   nombre        String
   fechaInicio   String
   fechaFin      String
@@ -44,7 +44,7 @@ model Planes {
 }
 
 model Materias {
-  id            Int @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   nombre        String
   codigo        String
   observacion   String
@@ -52,24 +52,24 @@ model Materias {
 }
 
 model Orientaciones {
-  id      Int    @id @default(autoincrement())
-  nombre  String
+  id     Int    @id @default(autoincrement())
+  nombre String
 
-  especialidad  Especialidades          @relation(fields:[especialidadId], references: [id])
-  especialidadId  Int
-  plan          Planes                 @relation(fields:[planId], references: [id])
-  planId          Int
-  materia       Materias               @relation(fields:[materiaId], references: [id])
-  materiaId       Int
+  especialidad   Especialidades @relation(fields: [especialidadId], references: [id])
+  especialidadId Int
+  plan           Planes         @relation(fields: [planId], references: [id])
+  planId         Int
+  materia        Materias       @relation(fields: [materiaId], references: [id])
+  materiaId      Int
 }
 
-model Alumnos{
-  apellido    String
-  nombre      String
-  nroDocumento String
-  tipoDocumento String
+model Alumnos {
+  apellido        String
+  nombre          String
+  nroDocumento    String
+  tipoDocumento   String
   fechaNacimiento String
-  sexo         String
-  nroLegajo Int @id
-  fechaIngreso DateTime
+  sexo            String
+  nroLegajo       Int      @id
+  fechaIngreso    DateTime
 }

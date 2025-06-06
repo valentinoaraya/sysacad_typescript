@@ -1,8 +1,20 @@
 import { CargoAtributos } from "../types";
 import { BaseValidator } from "./BaseValidator";
-import { Cargo } from "../models/Cargo";
 
 export class AutoridadValidator extends BaseValidator {
+
+    //private static esCargoAtributos = (value: any): value is CargoAtributos => {
+    //return (
+    //    typeof value === 'object' &&
+    //      value !== null &&
+    //       'nombre' in value &&
+    //        typeof value.nombre === 'string' &&
+    //        'puntos' in value &&
+    //        typeof value.puntos === 'number' &&
+
+    //    )
+    //}
+
     static validate(
         apellido: string,
         nombre: string,
@@ -21,6 +33,6 @@ export class AutoridadValidator extends BaseValidator {
         this.validateString(telefono, "telefono")
         this.validateString(email, "email")
 
-        this.validateInstance(cargo, "cargo", Cargo)
+        //this.validateType(cargo, "cargo")
     }
 }

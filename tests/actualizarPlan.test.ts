@@ -1,13 +1,12 @@
 import { PlanService } from "../src/services/PlanService"
-import { crearPlanEjemplo } from "../src/utils";
+import { instanciaPlan as plan } from "./utils";
 
-test("Deberia crear un plan en la base de datos y actualizar el campo nombre" , async ()=> {
-    const plan = await crearPlanEjemplo();
+test("Deberia crear un plan en la base de datos y actualizar el campo nombre", async () => {
     const planCreado = await PlanService.crearPlan(plan);
     const nuevosDatosPlan = {
-        nombre : "2025"
+        nombre: "2025"
     }
-    const planActualizado = await PlanService.actualizarPlan(planCreado.id as number , nuevosDatosPlan);
+    const planActualizado = await PlanService.actualizarPlan(planCreado.id as number, nuevosDatosPlan);
 
     expect(planActualizado).toBeTruthy();
     expect(planActualizado?.id).toBe(planCreado.id);
