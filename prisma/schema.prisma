@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -31,7 +25,7 @@ model Especialidades {
   nombre        String
   letra         String
   observacion   String
-  orientaciones Orientaciones[]
+  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
 }
 
 model Planes {
@@ -40,7 +34,7 @@ model Planes {
   fechaInicio   String
   fechaFin      String
   observacion   String
-  orientaciones Orientaciones[]
+  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
 }
 
 model Materias {
@@ -48,13 +42,12 @@ model Materias {
   nombre        String
   codigo        String
   observacion   String
-  orientaciones Orientaciones[]
+  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
 }
 
 model Orientaciones {
-  id     Int    @id @default(autoincrement())
-  nombre String
-
+  id             Int            @id @default(autoincrement())
+  nombre         String
   especialidad   Especialidades @relation(fields: [especialidadId], references: [id])
   especialidadId Int
   plan           Planes         @relation(fields: [planId], references: [id])
@@ -64,12 +57,54 @@ model Orientaciones {
 }
 
 model Alumnos {
+  nroLegajo       Int      @id
   apellido        String
   nombre          String
   nroDocumento    String
   tipoDocumento   String
   fechaNacimiento String
   sexo            String
-  nroLegajo       Int      @id
   fechaIngreso    DateTime
+}
+
+model CategoriasCargo {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  cargos      Cargos[] // relación uno a muchos con Cargos
+  creadoEn    DateTime @default(now())
+}
+
+model TiposDedicaciones {
+  id            Int      @id @default(autoincrement())
+  nombre        String
+  observacion   String?
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  cargos Cargos[] // relación inversa con Cargos
+}
+
+model Cargos {
+  id               Int               @id @default(autoincrement())
+  nombre           String
+  puntos           Int
+  descripcion      String?
+  categoriaCargo   CategoriasCargo   @relation(fields: [categoriaId], references: [id])
+  categoriaId      Int
+  tipoDedicacion   TiposDedicaciones @relation(fields: [tipoDedicacionId], references: [id])
+  tipoDedicacionId Int
+  autoridades      Autoridades[] // relación uno a muchos con Autoridades
+  creadoEn         DateTime          @default(now())
+}
+
+model Autoridades {
+  id       Int      @id @default(autoincrement())
+  nombre   String
+  apellido String
+  email    String
+  telefono String
+  cargo    Cargos   @relation(fields: [cargoId], references: [id])
+  cargoId  Int
+  creadoEn DateTime @default(now())
 }

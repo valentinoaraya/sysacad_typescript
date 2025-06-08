@@ -12,5 +12,5 @@ test("deberia crear una clase de autoridad y leer sus atributos", async () => {
     expect(autoridadCreada?.apellido).toBe(autoridad.apellido)
     expect(autoridadCreada?.telefono).toBe(autoridad.telefono)
     expect(autoridadCreada?.email).toBe(autoridad.email)
+    expect(autoridadCreada.cargo.nombre).toBe(autoridad.cargo.nombre)
 })
-

@@ -15,4 +15,14 @@ export class Cargo implements CargoAtributos {
     get puntos(): number { return this._puntos }
     get categoriaCargo(): CategoriaCargoAtributos { return this._categoriaCargo }
     get tipoDedicacion(): TipoDedicacionAtributos { return this._tipoDedicacion }
+
+    toPlainObject(){
+        return {
+            nombre: this.nombre,
+            puntos: this.puntos,
+            categoriaCargo: { connect: { id: this.categoriaCargo.id } },
+            tipoDedicacion: { connect: { id: this.tipoDedicacion.id } }
+        };
+    }
+
 }

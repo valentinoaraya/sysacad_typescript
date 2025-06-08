@@ -10,4 +10,10 @@ export class TipoEspecialidad implements TipoEspecialidadAtributos {
     }
     get nombre(): string { return this._nombre }
     get nivel(): string { return this._nivel }
+    toPlainObject(): TipoEspecialidadAtributos {
+        return {
+            nombre: this.nombre,
+            nivel: this.nivel
+        }
+    }
 }
