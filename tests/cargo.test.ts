@@ -1,19 +1,17 @@
-import { Cargo } from "../src/models/Cargo";
-import { CategoriaCargo } from "../src/models/CategoriaCargo";
-import { TipoDedicacion } from "../src/models/TipoDedicacion";
+import { CargoService } from "../src/services/CargoService";
+import { crearInstanciaCargo } from "./utils";
 
-test('deberia de crear una instancia de la clase Cargo y leer sus atributos', () => {
+test('deberia de crear una instancia de la clase Cargo y leer sus atributos', async() => {
 
-    const categoria = new CategoriaCargo("media");
-    const dedicacion = new TipoDedicacion("administrativo", "sin observacion");
-    const cargo = new Cargo("secretario academico", 281, categoria, dedicacion)
+    const instanciaCargo =await crearInstanciaCargo()
+    const cargoCreado = await CargoService.crearCargo(instanciaCargo)
 
-    expect(cargo).toBeTruthy();
-    expect(cargo.nombre).toBe("secretario academico");
-    expect(cargo.puntos).toBe(281);
-    expect(cargo.categoriaCargo).toBe(categoria);
-    expect(cargo.tipoDedicacion).toBe(dedicacion);
-
+    expect(cargoCreado).toBeTruthy()
+    expect(cargoCreado?.id).toBe(cargoCreado.id)
+    expect(cargoCreado?.nombre).toBe(instanciaCargo.nombre)
+    expect(cargoCreado.puntos).toBe(instanciaCargo.puntos)
+    expect(cargoCreado.tipoDedicacion.nombre).toBe(instanciaCargo.tipoDedicacion.nombre)
+    expect(cargoCreado.categoriaCargo.nombre).toBe(instanciaCargo.categoriaCargo.nombre)
 });
 
 

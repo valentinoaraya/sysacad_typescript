@@ -36,15 +36,18 @@ export interface CargoAtributos {
     puntos: number;
     categoriaCargo: CategoriaCargoAtributos;
     tipoDedicacion: TipoDedicacionAtributos;
+    id?: number;
 }
 
 export interface CategoriaCargoAtributos {
     nombre: string;
+    id?: number;
 }
 
 export interface TipoDedicacionAtributos {
     nombre: string;
     observacion: string;
+    id?: number;
 }
 
 export interface AutoridadAtributos {
@@ -53,6 +56,7 @@ export interface AutoridadAtributos {
     cargo: CargoAtributos;
     telefono: string;
     email: string;
+    id?: number;
 }
 
 export interface EspecialidadAtributos {
@@ -77,7 +81,7 @@ export interface GradoAtributos {
 export interface MateriaAtributos {
     nombre: string;
     codigo: string;
-    observacion: string;
+    observacion: string|null;
     id?: number;
 }
 

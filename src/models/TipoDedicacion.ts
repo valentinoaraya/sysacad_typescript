@@ -11,4 +11,11 @@ export class TipoDedicacion implements TipoDedicacionAtributos {
 
     get nombre(): string { return this._nombre }
     get observacion(): string { return this._observacion }
+    toPlainObject(): TipoDedicacionAtributos {
+        return {
+            nombre: this.nombre,
+            observacion: this.observacion,
+        }
+
+    }
 }

@@ -15,6 +15,9 @@ import { Universidad } from "../src/models/Universidad";
 import { EspecialidadService } from "../src/services/EspecialidadService";
 import { MateriaService } from "../src/services/MateriaService";
 import { PlanService } from "../src/services/PlanService";
+import { CargoService } from "../src/services/CargoService";
+import { CategoriaCargoService } from "../src/services/CategoriaCargoService";
+import { TipoDedicacionService } from "../src/services/TipoDedicacionService";
 
 const fecha = new Date("2025-07-14")
 
@@ -27,12 +30,6 @@ export const instanciaTipoDedicacion = new TipoDedicacion(
     "Sin observación"
 )
 
-export const instanciaCargoAtributos = new Cargo(
-    "Secretario Académico",
-    281,
-    instanciaCategoriaCargo,
-    instanciaTipoDedicacion
-)
 
 export const instanciaAlumno = new Alumno(
     "Patiño",
@@ -43,14 +40,6 @@ export const instanciaAlumno = new Alumno(
     "M",
     9938,
     fecha
-)
-
-export const instanciaAutoridad = new Autoridad(
-    "Araya",
-    "Valentino",
-    instanciaCargoAtributos,
-    "2604204836",
-    "valentinoaraya04@gmail.com"
 )
 
 export const instanciaDepartamento = new Departamento(
@@ -111,4 +100,31 @@ export const crearInstanciaOrientacion = async () => {
     const materiaPersistida = await MateriaService.crearMateria(instanciaMateria)
 
     return new Orientacion("Ingeniería", especialidadPersistida, planPersistido, materiaPersistida)
+}
+
+export const crearInstanciaCargo = async() => {
+    const categoriaCargoPersistida = await CategoriaCargoService.crearCategoriaCargo(instanciaCategoriaCargo)
+    const tipoDedicacionPersistida = await TipoDedicacionService.crearTipoDedicacion(instanciaTipoDedicacion)
+    return new Cargo(
+        "Secretario Académico",
+        281,
+        categoriaCargoPersistida,
+        tipoDedicacionPersistida
+    )
+
+
+}
+
+export const crearInstanciaAutoridad = async () => {
+    const cargo = await crearInstanciaCargo()
+    const cargoPersistido = await CargoService.crearCargo(cargo);
+
+    return new Autoridad(
+    "Araya",
+    "Valentino",
+    cargoPersistido,
+    "2604204836",
+    "valentinoaraya04@gmail.com"
+    )
+
 }

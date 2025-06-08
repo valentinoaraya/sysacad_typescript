@@ -9,4 +9,9 @@ export class CategoriaCargo implements CategoriaCargoAtributos {
     }
 
     get nombre(): string { return this._nombre }
+    toPlainObject(): CategoriaCargoAtributos {
+        return {
+            nombre: this.nombre,
+        }
+    }
 }

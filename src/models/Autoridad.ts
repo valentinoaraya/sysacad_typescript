@@ -17,4 +17,15 @@ export class Autoridad implements AutoridadAtributos {
     get cargo(): CargoAtributos { return this._cargo }
     get telefono(): string { return this._telefono }
     get email(): string { return this._email }
+
+    toPlainObject() {
+        return {
+            apellido: this.apellido,
+            nombre: this.nombre,
+            cargo: { connect: { id: this.cargo.id } },
+            telefono: this.telefono,
+            email: this.email
+        }
+    }
+
 }
