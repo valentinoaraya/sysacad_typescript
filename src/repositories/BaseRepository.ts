@@ -1,6 +1,8 @@
-export abstract class BaseRepository<T> {
-    protected abstract readonly model: any;
-    protected abstract readonly includes?: any;
+export class BaseCreator<T> {
+    constructor(
+        protected readonly model: any,
+        protected readonly includes?: any
+    ) { }
 
     async crear(data: T): Promise<T> {
         try {
@@ -18,6 +20,13 @@ export abstract class BaseRepository<T> {
             throw new Error(`Error al crear entidad: ${error}`);
         }
     }
+}
+
+export class BaseFinder<T> {
+    constructor(
+        protected readonly model: any,
+        protected readonly includes?: any,
+    ) { }
 
     async buscarPorId(id: number): Promise<T | null> {
         try {
@@ -31,6 +40,14 @@ export abstract class BaseRepository<T> {
             throw new Error(`Error al obtener la entidad con el id ${id}: ${error}`);
         }
     }
+
+}
+
+export class BaseUpdater<T> {
+    constructor(
+        protected readonly model: any,
+        protected readonly includes?: any,
+    ) { }
 
     async actualizar(id: number, nuevosDatos: Partial<T>): Promise<T> {
         try {
@@ -49,6 +66,14 @@ export abstract class BaseRepository<T> {
             throw new Error(`Error al actualizar datos de la entidad: ${error}`);
         }
     }
+}
+
+export class BaseDeleter {
+
+    constructor(
+        protected readonly model: any,
+        protected readonly includes?: any,
+    ) { }
 
     async eliminar(id: number): Promise<void> {
         try {
