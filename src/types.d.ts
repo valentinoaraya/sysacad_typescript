@@ -102,3 +102,8 @@ export interface PlanAtributos {
     observacion : string;
     id?: number;
 }
+
+export interface GradoAtributos {
+    id?: number;
+    nombre: string;
+}

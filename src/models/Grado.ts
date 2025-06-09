@@ -9,5 +9,10 @@ export class Grado implements GradoAtributos {
     }
 
     get nombre(): string { return this._nombre }
-}
+
+    toPlainObject(): GradoAtributos {
+            return {
+                nombre: this.nombre
+            };
+}}
 

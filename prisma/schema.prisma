@@ -109,3 +109,8 @@ model Autoridades {
   cargoId  Int
   creadoEn DateTime @default(now())
 }
+
+model Grados{
+  id Int @id @default(autoincrement())
+  nombre String
+}
