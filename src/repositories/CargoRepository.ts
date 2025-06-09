@@ -1,8 +1,6 @@
 import { BaseCreator, BaseFinder, BaseUpdater, BaseDeleter } from "./BaseRepository";
 import { PrismaClient } from "@prisma/client";
 import { CargoAtributos } from "../types";
-import { CategoriaCargo } from "../models/CategoriaCargo";
-import { TipoDedicacion } from "../models/TipoDedicacion";
 
 const prisma = new PrismaClient();
 export class CargoRepository {

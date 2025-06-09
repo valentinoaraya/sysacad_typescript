@@ -24,6 +24,7 @@ export interface FacultadAtributos {
     domicilio: string;
     email: string;
     contacto: string;
+    id?: number;
 }
 
 export interface UniversidadAtributos {

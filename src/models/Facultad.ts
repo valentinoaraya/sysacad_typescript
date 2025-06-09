@@ -38,4 +38,19 @@ export class Facultad implements FacultadAtributos {
     get telefono(): string { return this._telefono; }
     get contacto(): string { return this._contacto; }
     get email(): string { return this._email; }
+
+    toPlainObject(): FacultadAtributos {
+        return {
+            nombre: this.nombre,
+            abreviatura: this.abreviatura,
+            directorio: this.directorio,
+            sigla: this.sigla,
+            codigoPostal: this.codigoPostal,
+            ciudad: this.ciudad,
+            domicilio: this.domicilio,
+            telefono: this.telefono,
+            contacto: this.contacto,
+            email: this.email,
+        }
+    }
 }
