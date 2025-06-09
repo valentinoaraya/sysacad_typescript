@@ -1,11 +1,8 @@
-import { CategoriaCargo } from "../src/models/CategoriaCargo";
+import { instanciaCategoriaCargo as categoriaCargo } from "./utils";
 
 test('deberia de crear una instancia de la clase CategoriaCargo y leer sus atributos', () => {
-    const categoriaCargo = new CategoriaCargo(
-        "categoria"
-    );
 
     expect(categoriaCargo).toBeTruthy();
-    expect(categoriaCargo.nombre).toBe("categoria");
+    expect(categoriaCargo.nombre).toBe("media");
 
 })

@@ -19,7 +19,7 @@ import { CargoService } from "../src/services/CargoService";
 import { CategoriaCargoService } from "../src/services/CategoriaCargoService";
 import { TipoDedicacionService } from "../src/services/TipoDedicacionService";
 
-const fecha = new Date("2025-07-14")
+const fecha = new Date("2023-03-11")
 
 export const instanciaCategoriaCargo = new CategoriaCargo(
     "media"
@@ -30,13 +30,12 @@ export const instanciaTipoDedicacion = new TipoDedicacion(
     "Sin observación"
 )
 
-
 export const instanciaAlumno = new Alumno(
-    "Patiño",
-    "Ignacio",
+    "Araya",
+    "Valentino",
     "45361303",
     "DNI",
-    "14-07-2004",
+    "2004-07-14",
     "M",
     9938,
     fecha
@@ -102,7 +101,7 @@ export const crearInstanciaOrientacion = async () => {
     return new Orientacion("Ingeniería", especialidadPersistida, planPersistido, materiaPersistida)
 }
 
-export const crearInstanciaCargo = async() => {
+export const crearInstanciaCargo = async () => {
     const categoriaCargoPersistida = await CategoriaCargoService.crearCategoriaCargo(instanciaCategoriaCargo)
     const tipoDedicacionPersistida = await TipoDedicacionService.crearTipoDedicacion(instanciaTipoDedicacion)
     return new Cargo(
@@ -120,11 +119,11 @@ export const crearInstanciaAutoridad = async () => {
     const cargoPersistido = await CargoService.crearCargo(cargo);
 
     return new Autoridad(
-    "Araya",
-    "Valentino",
-    cargoPersistido,
-    "2604204836",
-    "valentinoaraya04@gmail.com"
+        "Araya",
+        "Valentino",
+        cargoPersistido,
+        "2604204836",
+        "valentinoaraya04@gmail.com"
     )
 
 }

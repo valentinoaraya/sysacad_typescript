@@ -1,15 +1,41 @@
-import { BaseRepository } from "./BaseRepository";
+import { BaseCreator, BaseFinder, BaseUpdater, BaseDeleter } from "./BaseRepository";
 import { PrismaClient } from "@prisma/client";
 import { CargoAtributos } from "../types";
-import { CategoriaCargo } from "../models/CategoriaCargo";
-import { TipoDedicacion } from "../models/TipoDedicacion";
 
 const prisma = new PrismaClient();
-export class CargoRepository extends BaseRepository<CargoAtributos> {
+export class CargoRepository {
     protected readonly model = prisma.cargos;
     protected readonly includes = {
         categoriaCargo: true,
         tipoDedicacion: true,
 
     };
+
+    private readonly creator: BaseCreator<CargoAtributos>
+    private readonly finder: BaseFinder<CargoAtributos>
+    private readonly updater: BaseUpdater<CargoAtributos>
+    private readonly deleter: BaseDeleter
+
+    constructor() {
+        this.creator = new BaseCreator<CargoAtributos>(this.model, this.includes)
+        this.finder = new BaseFinder<CargoAtributos>(this.model, this.includes)
+        this.updater = new BaseUpdater<CargoAtributos>(this.model, this.includes)
+        this.deleter = new BaseDeleter(this.model, this.includes)
+    }
+
+    async crear(data: CargoAtributos): Promise<CargoAtributos> {
+        return this.creator.crear(data)
+    }
+
+    async buscarPorId(id: number): Promise<CargoAtributos | null> {
+        return this.finder.buscarPorId(id)
+    }
+
+    async actualizar(id: number, nuevosDatos: Partial<CargoAtributos>): Promise<CargoAtributos> {
+        return this.updater.actualizar(id, nuevosDatos)
+    }
+
+    async eliminar(id: number): Promise<void> {
+        return this.deleter.eliminar(id)
+    }
 }

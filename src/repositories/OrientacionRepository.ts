@@ -1,13 +1,41 @@
 import { PrismaClient } from "@prisma/client";
 import { OrientacionAtributos } from "../types";
-import { BaseRepository } from "./BaseRepository";
+import { BaseCreator, BaseFinder, BaseUpdater, BaseDeleter } from "./BaseRepository";
 
 const prisma = new PrismaClient();
-export class OrientacionRepository extends BaseRepository<OrientacionAtributos> {
+export class OrientacionRepository {
     protected readonly model = prisma.orientaciones;
     protected readonly includes = {
         especialidad: true,
         plan: true,
         materia: true
     };
+
+    private readonly creator: BaseCreator<OrientacionAtributos>
+    private readonly finder: BaseFinder<OrientacionAtributos>
+    private readonly updater: BaseUpdater<OrientacionAtributos>
+    private readonly deleter: BaseDeleter
+
+    constructor() {
+        this.creator = new BaseCreator<OrientacionAtributos>(this.model, this.includes)
+        this.finder = new BaseFinder<OrientacionAtributos>(this.model, this.includes)
+        this.updater = new BaseUpdater<OrientacionAtributos>(this.model, this.includes)
+        this.deleter = new BaseDeleter(this.model, this.includes)
+    }
+
+    async crear(data: OrientacionAtributos): Promise<OrientacionAtributos> {
+        return this.creator.crear(data)
+    }
+
+    async buscarPorId(id: number): Promise<OrientacionAtributos | null> {
+        return this.finder.buscarPorId(id)
+    }
+
+    async actualizar(id: number, nuevosDatos: Partial<OrientacionAtributos>): Promise<OrientacionAtributos> {
+        return this.updater.actualizar(id, nuevosDatos)
+    }
+
+    async eliminar(id: number): Promise<void> {
+        return this.deleter.eliminar(id)
+    }
 }
