@@ -123,3 +123,7 @@ model Facultades {
   email         String   
   creadoEn      DateTime @default(now())
 }
+model Grados{
+  id Int @id @default(autoincrement())
+  nombre String
+}
