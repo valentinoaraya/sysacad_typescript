@@ -61,16 +61,63 @@ CREATE TABLE "Orientaciones" (
 
 -- CreateTable
 CREATE TABLE "Alumnos" (
+    "nroLegajo" INTEGER NOT NULL,
     "apellido" TEXT NOT NULL,
     "nombre" TEXT NOT NULL,
     "nroDocumento" TEXT NOT NULL,
     "tipoDocumento" TEXT NOT NULL,
     "fechaNacimiento" TEXT NOT NULL,
     "sexo" TEXT NOT NULL,
-    "nroLegajo" INTEGER NOT NULL,
     "fechaIngreso" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Alumnos_pkey" PRIMARY KEY ("nroLegajo")
+);
+
+-- CreateTable
+CREATE TABLE "CategoriasCargo" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "descripcion" TEXT,
+    "creadoEn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "CategoriasCargo_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "TiposDedicaciones" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "observacion" TEXT,
+    "creadoEn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "actualizadoEn" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "TiposDedicaciones_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Cargos" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "puntos" INTEGER NOT NULL,
+    "descripcion" TEXT,
+    "categoriaId" INTEGER NOT NULL,
+    "tipoDedicacionId" INTEGER NOT NULL,
+    "creadoEn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Cargos_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Autoridades" (
+    "id" SERIAL NOT NULL,
+    "nombre" TEXT NOT NULL,
+    "apellido" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "telefono" TEXT NOT NULL,
+    "cargoId" INTEGER NOT NULL,
+    "creadoEn" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Autoridades_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -84,3 +131,12 @@ ALTER TABLE "Orientaciones" ADD CONSTRAINT "Orientaciones_planId_fkey" FOREIGN K
 
 -- AddForeignKey
 ALTER TABLE "Orientaciones" ADD CONSTRAINT "Orientaciones_materiaId_fkey" FOREIGN KEY ("materiaId") REFERENCES "Materias"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Cargos" ADD CONSTRAINT "Cargos_categoriaId_fkey" FOREIGN KEY ("categoriaId") REFERENCES "CategoriasCargo"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Cargos" ADD CONSTRAINT "Cargos_tipoDedicacionId_fkey" FOREIGN KEY ("tipoDedicacionId") REFERENCES "TiposDedicaciones"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Autoridades" ADD CONSTRAINT "Autoridades_cargoId_fkey" FOREIGN KEY ("cargoId") REFERENCES "Cargos"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
