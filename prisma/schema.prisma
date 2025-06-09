@@ -57,7 +57,8 @@ model Orientaciones {
 }
 
 model Alumnos {
-  nroLegajo       Int      @id
+  id              Int      @id @default(autoincrement())
+  nroLegajo       Int      @unique
   apellido        String
   nombre          String
   nroDocumento    String
