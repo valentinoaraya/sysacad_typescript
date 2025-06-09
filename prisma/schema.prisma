@@ -109,8 +109,17 @@ model Autoridades {
   cargoId  Int
   creadoEn DateTime @default(now())
 }
-
-model Grados{
-  id Int @id @default(autoincrement())
-  nombre String
+model Facultades {
+  id            Int      @id @default(autoincrement())
+  nombre        String
+  abreviatura   String
+  directorio    String
+  sigla         String
+  codigoPostal  String
+  ciudad        String
+  domicilio     String
+  telefono      String
+  contacto      String
+  email         String   
+  creadoEn      DateTime @default(now())
 }

@@ -8,7 +8,6 @@ export class CargoRepository {
     protected readonly includes = {
         categoriaCargo: true,
         tipoDedicacion: true,
-
     };
 
     private readonly creator: BaseCreator<CargoAtributos>

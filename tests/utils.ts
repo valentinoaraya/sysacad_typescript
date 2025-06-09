@@ -110,8 +110,6 @@ export const crearInstanciaCargo = async () => {
         categoriaCargoPersistida,
         tipoDedicacionPersistida
     )
-
-
 }
 
 export const crearInstanciaAutoridad = async () => {
@@ -125,5 +123,4 @@ export const crearInstanciaAutoridad = async () => {
         "2604204836",
         "valentinoaraya04@gmail.com"
     )
-
 }
