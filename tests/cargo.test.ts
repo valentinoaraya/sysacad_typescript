@@ -1,9 +1,9 @@
 import { CargoService } from "../src/services/CargoService";
 import { crearInstanciaCargo } from "./utils";
 
-test('deberia de crear una instancia de la clase Cargo y leer sus atributos', async() => {
+test('deberia de crear una instancia de la clase Cargo y leer sus atributos', async () => {
 
-    const instanciaCargo =await crearInstanciaCargo()
+    const instanciaCargo = await crearInstanciaCargo()
     const cargoCreado = await CargoService.crearCargo(instanciaCargo)
 
     expect(cargoCreado).toBeTruthy()
