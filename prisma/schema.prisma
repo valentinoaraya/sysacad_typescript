@@ -127,3 +127,7 @@ model Grados{
   id Int @id @default(autoincrement())
   nombre String
 }
+model Grupos{
+  id Int @id @default(autoincrement())
+  nombre String
+}

@@ -108,3 +108,8 @@ export interface GradoAtributos {
     id?: number;
     nombre: string;
 }
+
+export interface GrupoAtributos{
+    id?: number;
+    nombre: string;
+}
