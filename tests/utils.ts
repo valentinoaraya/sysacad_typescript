@@ -12,6 +12,7 @@ import { Plan } from "../src/models/Plan";
 import { TipoDedicacion } from "../src/models/TipoDedicacion";
 import { TipoEspecialidad } from "../src/models/TipoEspecialidad";
 import { Universidad } from "../src/models/Universidad";
+import { Grupo } from "../src/models/Grupo";
 import { EspecialidadService } from "../src/services/EspecialidadService";
 import { MateriaService } from "../src/services/MateriaService";
 import { PlanService } from "../src/services/PlanService";
@@ -89,6 +90,10 @@ export const instanciaUniversidad = new Universidad(
 export const instanciaTipoEspecialidad = new TipoEspecialidad(
     "Seguridad",
     "Correcta"
+)
+
+export const instanciaGrupo = new Grupo(
+    "Primer Grupo"
 )
 
 export const crearInstanciaOrientacion = async () => {
