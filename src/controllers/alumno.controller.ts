@@ -33,6 +33,21 @@ export const cargarAlumno = async (req: Request, res: Response) => {
     }
 }
 
+export const eliminarAlumno = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.body
+
+        const alumnoEliminado = await AlumnoService.eliminarAlumno(id)
+
+        if (!alumnoEliminado) {
+            res.status(400).send({ error: "Alumno no encontrado." })
+        }
+
+    } catch (error: any) {
+        res.status(500).send({ error: error.message })
+    }
+}
+
 export const obtenerCertificadoAlumno = async (req: Request, res: Response) => {
     try {
         const { id } = req.params
