@@ -49,7 +49,7 @@ export class BaseUpdater<T> {
         protected readonly includes?: any,
     ) { }
 
-    async actualizar(id: number, nuevosDatos: Partial<T>): Promise<T> {
+    async actualizar(id: number, nuevosDatos: Partial<T>): Promise<T | null> {
         try {
             if ('id' in nuevosDatos) {
                 throw new Error('No se puede actualizar el campo id');
@@ -68,18 +68,22 @@ export class BaseUpdater<T> {
     }
 }
 
-export class BaseDeleter {
+export class BaseDeleter<T> {
 
     constructor(
         protected readonly model: any,
         protected readonly includes?: any,
     ) { }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<T | null> {
         try {
-            await this.model.delete({
+            const entidadEliminada = await this.model.delete({
                 where: { id },
             });
+
+            if (!entidadEliminada) throw new Error(`No se encontró la entidad con el id ${id}`)
+
+            return entidadEliminada
         } catch (error: any) {
             throw new Error(`Error al eliminar la entidad: ${error}`);
         }
