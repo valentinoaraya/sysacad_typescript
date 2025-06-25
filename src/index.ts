@@ -1,5 +1,17 @@
-const prueba = "Prueba de ejecución"
+import express from "express"
+import { alumnoRouter } from "./routes/alumno.route"
+import { SERVER_PORT, URL_BASE } from "./config/variablesEntorno"
 
-console.log(prueba)
+const app = express()
 
-// TODO => Crear tests de Create, Read, Update, y Delete de clases en la base de datos
+app.use(express.json())
+
+app.get("/", (_req, res) => {
+    res.send("Hola desde express")
+})
+
+app.use(`${URL_BASE}/alumnos`, alumnoRouter)
+
+app.listen(SERVER_PORT, () => {
+    console.log("Server listening on port:", SERVER_PORT)
+})

@@ -8,8 +8,8 @@ export class AlumnoService {
         return this.AlumnoRepository.crear(alumno);
     }
 
-    static obtenerAlumnoPorLegajo(nroLegajo: number): Promise<AlumnoAtributos | null> {
-        return this.AlumnoRepository.buscarPorId(nroLegajo);
+    static obtenerAlumnoPorId(id: number): Promise<AlumnoAtributos | null> {
+        return this.AlumnoRepository.buscarPorId(id);
     }
 
     static actualizarAlumno(nroLegajo: number, nuevosDatos: Partial<AlumnoAtributos>): Promise<AlumnoAtributos> {
