@@ -12,11 +12,11 @@ export class GradoService {
         return this.gradoRepository.buscarPorId(id);
     }
 
-    static actualizarGrado(id: number, nuevosDatos: Partial<GradoAtributos>): Promise<GradoAtributos> {
+    static actualizarGrado(id: number, nuevosDatos: Partial<GradoAtributos>): Promise<GradoAtributos | null> {
         return this.gradoRepository.actualizar(id, nuevosDatos);
     }
 
-    static eliminarGrado(id: number): Promise<void> {
+    static eliminarGrado(id: number): Promise<GradoAtributos | null> {
         return this.gradoRepository.eliminar(id);
     }
 }

@@ -13,10 +13,10 @@ export class TipoDedicacionService {
         return this.TipoDedicaionRepository.buscarPorId(id);
     }
 
-    static actualizarTipoDedicacion(id: number, nuevosDatos: Partial<TipoDedicacionAtributos>): Promise<TipoDedicacionAtributos> {
+    static actualizarTipoDedicacion(id: number, nuevosDatos: Partial<TipoDedicacionAtributos>): Promise<TipoDedicacionAtributos | null> {
         return this.TipoDedicaionRepository.actualizar(id, nuevosDatos);
     }
-    static eliminarTipoDedicacion(id: number): Promise<void> {
+    static eliminarTipoDedicacion(id: number): Promise<TipoDedicacionAtributos | null> {
         return this.TipoDedicaionRepository.eliminar(id);
     }
 }

@@ -11,11 +11,11 @@ export class EspecialidadService {
         return this.EspecialidadRepository.buscarPorId(id);
     }
 
-    static actualizarEspecialidad(id: number, nuevosDatos: Partial<EspecialidadAtributos>): Promise<EspecialidadAtributos> {
+    static actualizarEspecialidad(id: number, nuevosDatos: Partial<EspecialidadAtributos>): Promise<EspecialidadAtributos | null> {
         return this.EspecialidadRepository.actualizar(id, nuevosDatos);
     }
 
-    static eliminarEspecialidad(id: number): Promise<void> {
+    static eliminarEspecialidad(id: number): Promise<EspecialidadAtributos | null> {
         return this.EspecialidadRepository.eliminar(id);
     }
 }

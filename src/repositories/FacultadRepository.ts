@@ -10,7 +10,7 @@ export class FacultadRepository {
     private readonly creator: BaseCreator<FacultadAtributos>
     private readonly finder: BaseFinder<FacultadAtributos>
     private readonly updater: BaseUpdater<FacultadAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<FacultadAtributos>
     constructor() {
         this.creator = new BaseCreator<FacultadAtributos>(this.model, this.includes)
         this.finder = new BaseFinder<FacultadAtributos>(this.model, this.includes)
@@ -20,13 +20,13 @@ export class FacultadRepository {
     async crear(facultad: FacultadAtributos): Promise<FacultadAtributos> {
         return await this.creator.crear(facultad)
     }
-    async buscarPorId(id: number): Promise<FacultadAtributos | null>{
+    async buscarPorId(id: number): Promise<FacultadAtributos | null> {
         return await this.finder.buscarPorId(id)
     }
-    async actualizar(id: number, nuevosDatos: Partial<FacultadAtributos>): Promise<FacultadAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<FacultadAtributos>): Promise<FacultadAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<FacultadAtributos | null> {
         return this.deleter.eliminar(id)
     }
 };

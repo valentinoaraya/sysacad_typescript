@@ -12,6 +12,6 @@ test("debería crear un grado en la base de datos y luego actualizar su campo si
     const categoriaCargoActualizada = await CategoriaCargoService.actualizarCategoriaCargo(categoriaCargoCreada.id as number, nuevosDatosCategoriaCargo)
 
     expect(categoriaCargoActualizada).toBeTruthy()
-    expect(categoriaCargoActualizada.id).toBe(categoriaCargoCreada.id)
-    expect(categoriaCargoActualizada.nombre).toBe(nuevosDatosCategoriaCargo.nombre)
+    expect(categoriaCargoActualizada?.id).toBe(categoriaCargoCreada.id)
+    expect(categoriaCargoActualizada?.nombre).toBe(nuevosDatosCategoriaCargo.nombre)
 })

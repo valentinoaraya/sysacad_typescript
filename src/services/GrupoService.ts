@@ -12,11 +12,11 @@ export class GrupoService {
         return this.grupoRepository.buscarPorId(id);
     }
 
-    static actualizarGrupo(id: number, nuevosDatos: Partial<GrupoAtributos>): Promise<GrupoAtributos> {
+    static actualizarGrupo(id: number, nuevosDatos: Partial<GrupoAtributos>): Promise<GrupoAtributos | null> {
         return this.grupoRepository.actualizar(id, nuevosDatos);
     }
 
-    static eliminarGrupo(id: number): Promise<void> {
+    static eliminarGrupo(id: number): Promise<GrupoAtributos | null> {
         return this.grupoRepository.eliminar(id);
     }
 }

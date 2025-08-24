@@ -13,7 +13,7 @@ export class CargoRepository {
     private readonly creator: BaseCreator<CargoAtributos>
     private readonly finder: BaseFinder<CargoAtributos>
     private readonly updater: BaseUpdater<CargoAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<CargoAtributos>
 
     constructor() {
         this.creator = new BaseCreator<CargoAtributos>(this.model, this.includes)
@@ -30,11 +30,11 @@ export class CargoRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<CargoAtributos>): Promise<CargoAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<CargoAtributos>): Promise<CargoAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<CargoAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }
