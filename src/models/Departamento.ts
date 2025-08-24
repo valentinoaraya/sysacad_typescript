@@ -9,4 +9,10 @@ export class Departamento implements DepartamentoAtributos {
     }
 
     get nombre(): string { return this._nombre }
+
+    toPlainObject() {
+        return {
+            nombre: this._nombre
+        };
+    }
 }
