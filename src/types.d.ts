@@ -88,6 +88,7 @@ export interface MateriaAtributos {
 }
 
 export interface DepartamentoAtributos {
+    id?: number;
     nombre: string;
 }
 
@@ -110,6 +111,11 @@ export interface GradoAtributos {
 }
 
 export interface GrupoAtributos{
+    id?: number;
+    nombre: string;
+}
+
+export interface AreaAtributos{
     id?: number;
     nombre: string;
 }

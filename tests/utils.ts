@@ -19,6 +19,7 @@ import { PlanService } from "../src/services/PlanService";
 import { CargoService } from "../src/services/CargoService";
 import { CategoriaCargoService } from "../src/services/CategoriaCargoService";
 import { TipoDedicacionService } from "../src/services/TipoDedicacionService";
+import { Area } from "../src/models/Area";
 
 const fecha = new Date("2023-03-11")
 
@@ -129,3 +130,7 @@ export const crearInstanciaAutoridad = async () => {
         "valentinoaraya04@gmail.com"
     )
 }
+
+export const instanciaArea = new Area(
+    "Primer Area"
+)

@@ -131,3 +131,11 @@ model Grupos{
   id Int @id @default(autoincrement())
   nombre String
 }
+model Areas{
+  id Int @id @default(autoincrement())
+  nombre String
+}
+model Departamentos{
+  id Int @id @default(autoincrement())
+  nombre String
+}
