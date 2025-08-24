@@ -12,6 +12,6 @@ test("debería crear un grupo en la base de datos y luego actualizar su campo si
     const grupoActualizado = await GrupoService.actualizarGrupo(grupoCreado.id as number, nuevosDatosGrupo)
 
     expect(grupoActualizado).toBeTruthy()
-    expect(grupoActualizado.id).toBe(grupoCreado.id)
-    expect(grupoActualizado.nombre).toBe(nuevosDatosGrupo.nombre)
+    expect(grupoActualizado?.id).toBe(grupoCreado.id)
+    expect(grupoActualizado?.nombre).toBe(nuevosDatosGrupo.nombre)
 })

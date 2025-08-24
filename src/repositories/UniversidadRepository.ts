@@ -11,7 +11,7 @@ export class UniversidadRepository {
     private readonly creator: BaseCreator<UniversidadAtributos>
     private readonly finder: BaseFinder<UniversidadAtributos>
     private readonly updater: BaseUpdater<UniversidadAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<UniversidadAtributos>
 
     constructor() {
         this.creator = new BaseCreator<UniversidadAtributos>(this.model, this.includes)
@@ -28,11 +28,11 @@ export class UniversidadRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<UniversidadAtributos>): Promise<UniversidadAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<UniversidadAtributos>): Promise<UniversidadAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<UniversidadAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

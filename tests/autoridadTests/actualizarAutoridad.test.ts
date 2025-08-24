@@ -17,5 +17,5 @@ test("deberia crear una clase de especialidad y luego actualizar su campo nombre
     expect(autoridadActualizada?.apellido).toBe(autoridadCreada.apellido)
     expect(autoridadActualizada?.telefono).toBe(autoridadCreada.telefono)
     expect(autoridadActualizada?.email).toBe(autoridadCreada.email)
-    expect(autoridadActualizada.cargo.nombre).toBe(autoridadCreada.cargo.nombre)
+    expect(autoridadActualizada?.cargo.nombre).toBe(autoridadCreada.cargo.nombre)
 })

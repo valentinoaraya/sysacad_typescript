@@ -12,11 +12,11 @@ export class UniversidadService {
         return this.universidadRepository.buscarPorId(id);
     }
 
-    static actualizarUniversidad(id: number, nuevosDatos: Partial<UniversidadAtributos>): Promise<UniversidadAtributos> {
+    static actualizarUniversidad(id: number, nuevosDatos: Partial<UniversidadAtributos>): Promise<UniversidadAtributos | null> {
         return this.universidadRepository.actualizar(id, nuevosDatos);
     }
 
-    static eliminarUniversidad(id: number): Promise<void> {
+    static eliminarUniversidad(id: number): Promise<UniversidadAtributos | null> {
         return this.universidadRepository.eliminar(id);
     }
 }

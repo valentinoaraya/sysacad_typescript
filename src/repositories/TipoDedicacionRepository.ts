@@ -11,7 +11,7 @@ export class TipoDedicacionRepository {
     private readonly creator: BaseCreator<TipoDedicacionAtributos>
     private readonly finder: BaseFinder<TipoDedicacionAtributos>
     private readonly updater: BaseUpdater<TipoDedicacionAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<TipoDedicacionAtributos>
 
     constructor() {
         this.creator = new BaseCreator<TipoDedicacionAtributos>(this.model, this.includes)
@@ -28,11 +28,11 @@ export class TipoDedicacionRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<TipoDedicacionAtributos>): Promise<TipoDedicacionAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<TipoDedicacionAtributos>): Promise<TipoDedicacionAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<TipoDedicacionAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

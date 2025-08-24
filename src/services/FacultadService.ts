@@ -10,10 +10,10 @@ export class FacultadService {
     static obtenerFacultadPorId(id: number): Promise<FacultadAtributos | null> {
         return this.FacultadRepository.buscarPorId(id);
     }
-    static actualizarFacultad(id: number, nuevosDatos: Partial<FacultadAtributos>): Promise<FacultadAtributos> {
+    static actualizarFacultad(id: number, nuevosDatos: Partial<FacultadAtributos>): Promise<FacultadAtributos | null> {
         return this.FacultadRepository.actualizar(id, nuevosDatos);
     }
-    static eliminarFacultad(id: number): Promise<void> {
+    static eliminarFacultad(id: number): Promise<FacultadAtributos | null> {
         return this.FacultadRepository.eliminar(id);
     }
 

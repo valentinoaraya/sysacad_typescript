@@ -14,7 +14,7 @@ export class OrientacionRepository {
     private readonly creator: BaseCreator<OrientacionAtributos>
     private readonly finder: BaseFinder<OrientacionAtributos>
     private readonly updater: BaseUpdater<OrientacionAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<OrientacionAtributos>
 
     constructor() {
         this.creator = new BaseCreator<OrientacionAtributos>(this.model, this.includes)
@@ -31,11 +31,11 @@ export class OrientacionRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<OrientacionAtributos>): Promise<OrientacionAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<OrientacionAtributos>): Promise<OrientacionAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<OrientacionAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

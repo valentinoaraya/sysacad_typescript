@@ -12,7 +12,7 @@ test("debería crear una Universidad en la base de datos y luego actualizar su c
     const universidadActualizada = await UniversidadService.actualizarUniversidad(universidadCreada.id as number, nuevosDatosUniversidad)
 
     expect(universidadActualizada).toBeTruthy()
-    expect(universidadActualizada.id).toBe(universidadCreada.id)
-    expect(universidadActualizada.nombre).toBe(universidadCreada.nombre)
-    expect(universidadActualizada.sigla).toBe(nuevosDatosUniversidad.sigla)
+    expect(universidadActualizada?.id).toBe(universidadCreada.id)
+    expect(universidadActualizada?.nombre).toBe(universidadCreada.nombre)
+    expect(universidadActualizada?.sigla).toBe(nuevosDatosUniversidad.sigla)
 })

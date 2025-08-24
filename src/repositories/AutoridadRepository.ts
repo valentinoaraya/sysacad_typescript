@@ -13,7 +13,7 @@ export class AutoridadRepository {
     private readonly creator: BaseCreator<AutoridadAtributos>
     private readonly finder: BaseFinder<AutoridadAtributos>
     private readonly updater: BaseUpdater<AutoridadAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<AutoridadAtributos>
 
     constructor() {
         this.creator = new BaseCreator<AutoridadAtributos>(this.model, this.includes)
@@ -30,11 +30,11 @@ export class AutoridadRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<AutoridadAtributos>): Promise<AutoridadAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<AutoridadAtributos>): Promise<AutoridadAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<AutoridadAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

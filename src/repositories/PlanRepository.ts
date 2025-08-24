@@ -11,7 +11,7 @@ export class PlanRepository {
     private readonly creator: BaseCreator<PlanAtributos>
     private readonly finder: BaseFinder<PlanAtributos>
     private readonly updater: BaseUpdater<PlanAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<PlanAtributos>
 
     constructor() {
         this.creator = new BaseCreator<PlanAtributos>(this.model, this.includes)
@@ -28,11 +28,11 @@ export class PlanRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<PlanAtributos>): Promise<PlanAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<PlanAtributos>): Promise<PlanAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<PlanAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

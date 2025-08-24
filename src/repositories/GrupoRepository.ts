@@ -11,7 +11,7 @@ export class GrupoRepository {
     private readonly creator: BaseCreator<GrupoAtributos>
     private readonly finder: BaseFinder<GrupoAtributos>
     private readonly updater: BaseUpdater<GrupoAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<GrupoAtributos>
 
     constructor() {
         this.creator = new BaseCreator<GrupoAtributos>(this.model, this.includes)
@@ -28,11 +28,11 @@ export class GrupoRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<GrupoAtributos>): Promise<GrupoAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<GrupoAtributos>): Promise<GrupoAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<GrupoAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }
