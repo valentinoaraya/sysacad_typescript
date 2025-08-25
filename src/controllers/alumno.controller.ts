@@ -12,7 +12,7 @@ export const obtenerCertificadoAlumno = async (req: Request, res: Response) => {
 
         res.setHeader("Content-Disposition", `attachment; filename=certificado.${tipo}`);
         res.setHeader("Content-Type", "application/octet-stream");
-        res.send(buffer);
+        res.status(200).send(buffer);
 
     } catch (error: any) {
         console.error(error)
