@@ -11,6 +11,8 @@ export interface AlumnoAtributos {
     sexo: sexo;
     nroLegajo: number;
     fechaIngreso: Date;
+    facultadId?: number;
+    especialidadId?: number;
 }
 
 export interface FacultadAtributos {
@@ -25,6 +27,7 @@ export interface FacultadAtributos {
     email: string;
     contacto: string;
     id?: number;
+    universidadId?: number;
 }
 
 export interface UniversidadAtributos {
@@ -83,7 +86,7 @@ export interface GradoAtributos {
 export interface MateriaAtributos {
     nombre: string;
     codigo: string;
-    observacion: string|null;
+    observacion: string | null;
     id?: number;
 }
 
@@ -92,16 +95,16 @@ export interface DepartamentoAtributos {
     nombre: string;
 }
 
-export interface TipoEspecialidadAtributos  {
-    nombre : string;
-    nivel : string;
+export interface TipoEspecialidadAtributos {
+    nombre: string;
+    nivel: string;
 }
 
 export interface PlanAtributos {
-    nombre : string;
-    fechaInicio : string;
-    fechaFin : string;
-    observacion : string;
+    nombre: string;
+    fechaInicio: string;
+    fechaFin: string;
+    observacion: string;
     id?: number;
 }
 
@@ -110,12 +113,12 @@ export interface GradoAtributos {
     nombre: string;
 }
 
-export interface GrupoAtributos{
+export interface GrupoAtributos {
     id?: number;
     nombre: string;
 }
 
-export interface AreaAtributos{
+export interface AreaAtributos {
     id?: number;
     nombre: string;
 }

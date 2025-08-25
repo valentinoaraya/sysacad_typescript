@@ -1,19 +1,19 @@
-import { FacultadService } from "../../src/services/FacultadService";
-import { instanciaFacultad } from "../utils";
+import { FacultadService } from "../../src/services/FacultadService"
+import { crearInstanciaFacultad } from "../utils";
 
-test("deberia crear una clase de autoridad y leer sus atributos", async () => {
+test('deberia crear una clase de autoridad y leer sus atributos', async () => {
+    const facultad = await crearInstanciaFacultad();
+    const facultadCreada = await FacultadService.crearFacultad(facultad);
 
-    const facultad = await FacultadService.crearFacultad(instanciaFacultad)
-
-    expect(facultad).toBeTruthy()
-    expect(facultad.nombre).toBe(instanciaFacultad.nombre)
-    expect(facultad.abreviatura).toBe(instanciaFacultad.abreviatura)
-    expect(facultad.directorio).toBe(instanciaFacultad.directorio)
-    expect(facultad.sigla).toBe(instanciaFacultad.sigla)
-    expect(facultad.ciudad).toBe(instanciaFacultad.ciudad)
-    expect(facultad.codigoPostal).toBe(instanciaFacultad.codigoPostal)
-    expect(facultad.telefono).toBe(instanciaFacultad.telefono)
-    expect(facultad.domicilio).toBe(instanciaFacultad.domicilio)
-    expect(facultad.email).toBe(instanciaFacultad.email)
-    expect(facultad.contacto).toBe(instanciaFacultad.contacto)
-});
+    expect(facultadCreada).toBeTruthy();
+    expect(facultadCreada?.nombre).toBe(facultad.nombre);
+    expect(facultadCreada?.abreviatura).toBe(facultad.abreviatura);
+    expect(facultadCreada?.directorio).toBe(facultad.directorio);
+    expect(facultadCreada?.sigla).toBe(facultad.sigla);
+    expect(facultadCreada?.codigoPostal).toBe(facultad.codigoPostal);
+    expect(facultadCreada?.ciudad).toBe(facultad.ciudad);
+    expect(facultadCreada?.domicilio).toBe(facultad.domicilio);
+    expect(facultadCreada?.telefono).toBe(facultad.telefono);
+    expect(facultadCreada?.contacto).toBe(facultad.contacto);
+    expect(facultadCreada?.email).toBe(facultad.email);
+})

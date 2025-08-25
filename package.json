@@ -7,6 +7,7 @@
     "start": "ts-node-dev src/index.ts",
     "test": "npx jest --runInBand",
     "clear-db": "ts-node src/utils/limpiarDB.ts",
+    "generate-data": "ts-node src/utils/generarDatos.ts",
     "access-db": "psql -h localhost -p 3000 -U anfatitofa -d sysacad_db"
   },
   "keywords": [],
@@ -16,10 +17,14 @@
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
+    "@types/html-pdf-node": "^1.0.2",
+    "@types/html-to-docx": "^1.8.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.14.1",
+    "@types/supertest": "^6.0.3",
     "jest": "^29.7.0",
     "prisma": "^6.7.0",
+    "supertest": "^7.1.4",
     "ts-jest": "^29.3.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
@@ -39,6 +44,10 @@
   "dependencies": {
     "@prisma/client": "^6.7.0",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "handlebars": "^4.7.8",
+    "hashids": "^2.3.0",
+    "html-pdf-node": "^1.0.8",
+    "html-to-docx": "^1.8.0"
   }
 }

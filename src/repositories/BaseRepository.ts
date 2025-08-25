@@ -34,7 +34,6 @@ export class BaseFinder<T> {
                 where: { id },
                 include: this.includes
             });
-            if (!entidad) throw new Error(`No se encontró la entidad con el id ${id}`);
             return entidad;
         } catch (error: any) {
             throw new Error(`Error al obtener la entidad con el id ${id}: ${error}`);

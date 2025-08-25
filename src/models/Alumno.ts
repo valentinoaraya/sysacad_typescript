@@ -11,6 +11,8 @@ export class Alumno implements AlumnoAtributos {
         private readonly _sexo: sexo,
         private readonly _nroLegajo: number,
         private readonly _fechaIngreso: Date,
+        private readonly _facultadId?: number,
+        private readonly _especialidadId?: number,
     ) {
         AlumnoValidator.validate(
             _apellido,
@@ -20,7 +22,9 @@ export class Alumno implements AlumnoAtributos {
             _fechaNacimiento,
             _sexo,
             _nroLegajo,
-            _fechaIngreso
+            _fechaIngreso,
+            _facultadId,
+            _especialidadId
         )
     }
 
@@ -32,16 +36,21 @@ export class Alumno implements AlumnoAtributos {
     get fechaIngreso(): Date { return this._fechaIngreso }
     get sexo(): sexo { return this._sexo }
     get fechaNacimiento(): string { return this._fechaNacimiento }
+    get facultadId(): number | undefined { return this._facultadId }
+    get especialidadId(): number | undefined { return this._especialidadId }
 
     toPlainObject(): AlumnoAtributos {
-            return {
-                apellido: this.apellido,
-                nombre: this.nombre,
-                nroDocumento: this.nroDocumento,
-                nroLegajo: this.nroLegajo,
-                tipoDocumento: this.tipoDocumento,
-                fechaIngreso: this.fechaIngreso,
-                sexo: this.sexo,
-                fechaNacimiento: this.fechaNacimiento
-            };
-}}
+        return {
+            apellido: this.apellido,
+            nombre: this.nombre,
+            nroDocumento: this.nroDocumento,
+            nroLegajo: this.nroLegajo,
+            tipoDocumento: this.tipoDocumento,
+            fechaIngreso: this.fechaIngreso,
+            sexo: this.sexo,
+            fechaNacimiento: this.fechaNacimiento,
+            facultadId: this.facultadId,
+            especialidadId: this.especialidadId,
+        };
+    }
+}

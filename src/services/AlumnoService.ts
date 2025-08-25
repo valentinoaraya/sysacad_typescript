@@ -1,5 +1,6 @@
 import { AlumnoRepository } from "../repositories/AlumnoRepository";
 import { AlumnoAtributos } from "../types";
+import { obtenerTipoDocumento } from "./Documentos";
 
 export class AlumnoService {
     private static readonly AlumnoRepository = new AlumnoRepository();
@@ -20,4 +21,31 @@ export class AlumnoService {
         return this.AlumnoRepository.eliminar(nroLegajo);
     }
 
+    static async obtenerCertificadoAlumnoRegular(id: number, tipo: string): Promise<Buffer> {
+        const alumno = await this.AlumnoRepository.buscarPorId(id)
+
+        if (!alumno) throw new Error("Alumno no encontrado.")
+
+        const documento = obtenerTipoDocumento(tipo)
+        const basePath = process.cwd();
+
+        const context = {
+            alumno: {
+                ...alumno,
+                tipo_documento: { sigla: alumno.tipoDocumento },
+                nrodocumento: alumno.nroDocumento,
+                nro_legajo: alumno.nroLegajo
+            },
+            especialidad: { nombre: "Ingeniería en Sistemas de Información" },
+            facultad: { nombre: "Facultad de Ingeniería", ciudad: "Buenos Aires" },
+            universidad: { nombre: "Universidad Tecnológica Nacional" },
+            fecha: new Date().toLocaleDateString("es-AR"),
+        }
+
+        return documento.generar({
+            carpeta: "/tmp",
+            context,
+            nombre: "certificado"
+        })
+    }
 }
