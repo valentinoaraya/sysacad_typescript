@@ -35,5 +35,5 @@ export class AlumnoRepository {
     async eliminar(id: number): Promise<AlumnoAtributos | null> {
         return this.deleter.eliminar(id)
     }
-
+    
 }

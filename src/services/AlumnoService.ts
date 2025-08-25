@@ -27,7 +27,6 @@ export class AlumnoService {
         if (!alumno) throw new Error("Alumno no encontrado.")
 
         const documento = obtenerTipoDocumento(tipo)
-        const basePath = process.cwd();
 
         const context = {
             alumno: {
