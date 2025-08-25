@@ -1,7 +1,7 @@
 import Hashids from "hashids";
 import { SALT_SECRET } from "../config/variablesEntorno";
 
-const hashids = new Hashids(SALT_SECRET, 10);
+const hashids = new Hashids(SALT_SECRET, 16);
 
 export function encodeId(id: number): string {
     return hashids.encode(id);
