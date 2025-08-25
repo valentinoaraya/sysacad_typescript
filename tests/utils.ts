@@ -20,7 +20,9 @@ import { CargoService } from "../src/services/CargoService";
 import { CategoriaCargoService } from "../src/services/CategoriaCargoService";
 import { TipoDedicacionService } from "../src/services/TipoDedicacionService";
 import { Area } from "../src/models/Area";
+import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
 const fecha = new Date("2023-03-11")
 
 export const instanciaCategoriaCargo = new CategoriaCargo(
@@ -31,6 +33,74 @@ export const instanciaTipoDedicacion = new TipoDedicacion(
     "Administrativo",
     "Sin observación"
 )
+
+export const crearEntidadesPadre = async () => {
+    const universidad = await prisma.universidades.create({
+        data: {
+            nombre: "Universidad Tecnológica Nacional",
+            sigla: "UTN"
+        }
+    });
+
+    const facultad = await prisma.facultades.create({
+        data: {
+            nombre: "Facultad Regional de San Rafael",
+            abreviatura: "FRSR",
+            directorio: "Facultad de ingeniería",
+            sigla: "FRSR",
+            codigoPostal: "5600",
+            ciudad: "San Rafael",
+            domicilio: "Urquiza 314",
+            telefono: "02604421078",
+            contacto: "Ing. Roberto D. Vilches",
+            email: "rvilches@frsr.utn.edu.ar",
+            universidadId: universidad.id
+        }
+    });
+
+    const especialidad = await prisma.especialidades.create({
+        data: {
+            nombre: "Ingeniería en Sistemas",
+            letra: "A",
+            observacion: "Existe la ingeniería"
+        }
+    });
+
+    return { universidad, facultad, especialidad };
+};
+
+export const crearInstanciaAlumno = async () => {
+    const { facultad, especialidad } = await crearEntidadesPadre();
+    return new Alumno(
+        "Araya",
+        "Valentino",
+        "45361303",
+        "DNI",
+        "2004-07-14",
+        "M",
+        9938,
+        fecha,
+        facultad.id,
+        especialidad.id
+    );
+};
+
+export const crearInstanciaFacultad = async () => {
+    const { universidad } = await crearEntidadesPadre();
+    return new Facultad(
+        "Facultad Regional de San Rafael",
+        "FRSR",
+        "Facultad de ingeniería",
+        "FRSR",
+        "5600",
+        "San Rafael",
+        "Urquiza 314",
+        "02604421078",
+        "Ing. Roberto D. Vilches",
+        "rvilches@frsr.utn.edu.ar",
+        universidad.id
+    );
+};
 
 export const instanciaAlumno = new Alumno(
     "Araya",

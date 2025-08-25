@@ -2,7 +2,7 @@ import express from "express"
 import { alumnoRouter } from "./routes/alumno.route"
 import { SERVER_PORT, URL_BASE } from "./config/variablesEntorno"
 
-const app = express()
+export const app = express()
 
 app.use(express.json())
 
@@ -12,6 +12,8 @@ app.get("/", (_req, res) => {
 
 app.use(`${URL_BASE}/alumnos`, alumnoRouter)
 
-app.listen(SERVER_PORT, () => {
-    console.log("Server listening on port:", SERVER_PORT)
-})
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(SERVER_PORT, () => {
+        console.log("Server listening on port:", SERVER_PORT)
+    })
+}

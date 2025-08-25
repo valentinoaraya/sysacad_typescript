@@ -12,6 +12,7 @@ export class FacultadValidator extends BaseValidator {
         telefono: string,
         contacto: string,
         email: string,
+        universidadId: number | undefined
     ): void {
         this.validateRequired(nombre, "nombre")
         this.validateRequired(abreviatura, "abreviatura")
@@ -34,5 +35,8 @@ export class FacultadValidator extends BaseValidator {
         this.validateString(telefono, "telefono")
         this.validateString(contacto, "contacto")
         this.validateString(email, "email")
+        if (universidadId !== undefined) {
+            this.validateNumber(universidadId, "universidadId")
+        }
     }
 }

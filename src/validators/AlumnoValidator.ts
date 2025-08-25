@@ -11,6 +11,8 @@ export class AlumnoValidator extends BaseValidator {
         sexo: sexo,
         nroLegajo: number,
         fechaIngreso: Date,
+        facultadId: number | undefined,
+        especialidadId: number | undefined
     ): void {
         this.validateRequired(apellido, "apellido");
         this.validateRequired(nombre, "nombre");
@@ -27,6 +29,12 @@ export class AlumnoValidator extends BaseValidator {
         this.validateString(fechaNacimiento, "fechaNacimiento");
         this.validateNumber(nroLegajo, "nroLegajo");
         this.validateDate(fechaIngreso, "fechaIngreso");
+        if (facultadId !== undefined) {
+            this.validateNumber(facultadId, "facultadId");
+        }
+        if (especialidadId !== undefined) {
+            this.validateNumber(especialidadId, "especialidadId");
+        }
 
         this.validateEnum(tipoDocumento, "tipoDocumento", {
             DNI: "DNI",

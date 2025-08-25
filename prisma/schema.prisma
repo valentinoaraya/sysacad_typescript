@@ -15,9 +15,10 @@ model Usuarios {
 }
 
 model Universidades {
-  id     Int    @id @default(autoincrement())
-  nombre String
-  sigla  String
+  id         Int          @id @default(autoincrement())
+  nombre     String
+  sigla      String
+  facultades Facultades[]
 }
 
 model Especialidades {
@@ -25,7 +26,8 @@ model Especialidades {
   nombre        String
   letra         String
   observacion   String
-  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
+  orientaciones Orientaciones[]
+  alumnos       Alumnos[]
 }
 
 model Planes {
@@ -34,7 +36,7 @@ model Planes {
   fechaInicio   String
   fechaFin      String
   observacion   String
-  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
+  orientaciones Orientaciones[]
 }
 
 model Materias {
@@ -42,7 +44,7 @@ model Materias {
   nombre        String
   codigo        String
   observacion   String
-  orientaciones Orientaciones[] // relación uno a muchos con Orientaciones
+  orientaciones Orientaciones[]
 }
 
 model Orientaciones {
@@ -57,8 +59,8 @@ model Orientaciones {
 }
 
 model Alumnos {
-  id              Int      @id @default(autoincrement())
-  nroLegajo       Int      @unique
+  id              Int            @id @default(autoincrement())
+  nroLegajo       Int            @unique
   apellido        String
   nombre          String
   nroDocumento    String
@@ -66,13 +68,17 @@ model Alumnos {
   fechaNacimiento String
   sexo            String
   fechaIngreso    DateTime
+  facultad        Facultades     @relation(fields: [facultadId], references: [id])
+  facultadId      Int
+  especialidad    Especialidades @relation(fields: [especialidadId], references: [id])
+  especialidadId  Int
 }
 
 model CategoriasCargo {
   id          Int      @id @default(autoincrement())
   nombre      String
   descripcion String?
-  cargos      Cargos[] // relación uno a muchos con Cargos
+  cargos      Cargos[]
   creadoEn    DateTime @default(now())
 }
 
@@ -83,7 +89,7 @@ model TiposDedicaciones {
   creadoEn      DateTime @default(now())
   actualizadoEn DateTime @updatedAt
 
-  cargos Cargos[] // relación inversa con Cargos
+  cargos Cargos[]
 }
 
 model Cargos {
@@ -95,7 +101,7 @@ model Cargos {
   categoriaId      Int
   tipoDedicacion   TiposDedicaciones @relation(fields: [tipoDedicacionId], references: [id])
   tipoDedicacionId Int
-  autoridades      Autoridades[] // relación uno a muchos con Autoridades
+  autoridades      Autoridades[]
   creadoEn         DateTime          @default(now())
 }
 
@@ -109,8 +115,9 @@ model Autoridades {
   cargoId  Int
   creadoEn DateTime @default(now())
 }
+
 model Facultades {
-  id            Int      @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   nombre        String
   abreviatura   String
   directorio    String
@@ -120,22 +127,29 @@ model Facultades {
   domicilio     String
   telefono      String
   contacto      String
-  email         String   
-  creadoEn      DateTime @default(now())
+  email         String
+  creadoEn      DateTime      @default(now())
+  universidadId Int
+  universidad   Universidades @relation(fields: [universidadId], references: [id])
+  alumnos       Alumnos[]
 }
-model Grados{
-  id Int @id @default(autoincrement())
+
+model Grados {
+  id     Int    @id @default(autoincrement())
   nombre String
 }
-model Grupos{
-  id Int @id @default(autoincrement())
+
+model Grupos {
+  id     Int    @id @default(autoincrement())
   nombre String
 }
-model Areas{
-  id Int @id @default(autoincrement())
+
+model Areas {
+  id     Int    @id @default(autoincrement())
   nombre String
 }
-model Departamentos{
-  id Int @id @default(autoincrement())
+
+model Departamentos {
+  id     Int    @id @default(autoincrement())
   nombre String
 }

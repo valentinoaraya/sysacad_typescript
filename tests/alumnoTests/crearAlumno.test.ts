@@ -1,8 +1,8 @@
 import { AlumnoService } from "../../src/services/AlumnoService"
-import { instanciaAlumno as alumno } from "../utils";
+import { crearInstanciaAlumno } from "../utils";
 
 test('deberia crear y gurdar un alumno en la base de datos', async () => {
-
+    const alumno = await crearInstanciaAlumno();
     const alumnoCreado = await AlumnoService.crearAlumno(alumno);
 
     expect(alumnoCreado).toBeTruthy();

@@ -13,6 +13,7 @@ export class Facultad implements FacultadAtributos {
         private readonly _telefono: string,
         private readonly _contacto: string,
         private readonly _email: string,
+        private readonly _universidadId?: number,
     ) {
         FacultadValidator.validate(
             _nombre,
@@ -25,6 +26,7 @@ export class Facultad implements FacultadAtributos {
             _telefono,
             _contacto,
             _email,
+            _universidadId
         )
     }
 
@@ -38,6 +40,7 @@ export class Facultad implements FacultadAtributos {
     get telefono(): string { return this._telefono; }
     get contacto(): string { return this._contacto; }
     get email(): string { return this._email; }
+    get universidadId(): number | undefined { return this._universidadId; }
 
     toPlainObject(): FacultadAtributos {
         return {
@@ -51,6 +54,7 @@ export class Facultad implements FacultadAtributos {
             telefono: this.telefono,
             contacto: this.contacto,
             email: this.email,
+            universidadId: this.universidadId,
         }
     }
 }
