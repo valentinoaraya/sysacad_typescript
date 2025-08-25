@@ -11,7 +11,7 @@ export class MateriaRepository {
     private readonly creator: BaseCreator<MateriaAtributos>
     private readonly finder: BaseFinder<MateriaAtributos>
     private readonly updater: BaseUpdater<MateriaAtributos>
-    private readonly deleter: BaseDeleter
+    private readonly deleter: BaseDeleter<MateriaAtributos>
 
     constructor() {
         this.creator = new BaseCreator<MateriaAtributos>(this.model, this.includes)
@@ -28,11 +28,11 @@ export class MateriaRepository {
         return this.finder.buscarPorId(id)
     }
 
-    async actualizar(id: number, nuevosDatos: Partial<MateriaAtributos>): Promise<MateriaAtributos> {
+    async actualizar(id: number, nuevosDatos: Partial<MateriaAtributos>): Promise<MateriaAtributos | null> {
         return this.updater.actualizar(id, nuevosDatos)
     }
 
-    async eliminar(id: number): Promise<void> {
+    async eliminar(id: number): Promise<MateriaAtributos | null> {
         return this.deleter.eliminar(id)
     }
 }

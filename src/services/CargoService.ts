@@ -12,11 +12,11 @@ export class CargoService {
         return this.CargoRepository.buscarPorId(id);
     }
 
-    static actualizarCargo(id: number, nuevosDatos: Partial<CargoAtributos>): Promise<CargoAtributos> {
+    static actualizarCargo(id: number, nuevosDatos: Partial<CargoAtributos>): Promise<CargoAtributos | null> {
         return this.CargoRepository.actualizar(id, nuevosDatos);
     }
 
-    static eliminarCargo(id: number): Promise<void> {
+    static eliminarCargo(id: number): Promise<CargoAtributos | null> {
         return this.CargoRepository.eliminar(id);
     }
 }

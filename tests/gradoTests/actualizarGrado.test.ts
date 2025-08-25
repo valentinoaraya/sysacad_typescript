@@ -12,6 +12,6 @@ test("debería crear un grado en la base de datos y luego actualizar su campo si
     const gradoActualizado = await GradoService.actualizarGrado(gradoCreado.id as number, nuevosDatosGrado)
 
     expect(gradoActualizado).toBeTruthy()
-    expect(gradoActualizado.id).toBe(gradoCreado.id)
-    expect(gradoActualizado.nombre).toBe(nuevosDatosGrado.nombre)
+    expect(gradoActualizado?.id).toBe(gradoCreado.id)
+    expect(gradoActualizado?.nombre).toBe(nuevosDatosGrado.nombre)
 })

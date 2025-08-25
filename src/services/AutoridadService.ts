@@ -10,10 +10,10 @@ export class AutoridadService {
     static obtenerAutoridadPorId(id: number): Promise<AutoridadAtributos | null> {
         return this.AutoridadRepository.buscarPorId(id);
     }
-    static actualizarAutoridad(id: number, nuevosDatos: Partial<AutoridadAtributos>): Promise<AutoridadAtributos> {
+    static actualizarAutoridad(id: number, nuevosDatos: Partial<AutoridadAtributos>): Promise<AutoridadAtributos | null> {
         return this.AutoridadRepository.actualizar(id, nuevosDatos);
     }
-    static eliminarAutoridad(id: number): Promise<void> {
+    static eliminarAutoridad(id: number): Promise<AutoridadAtributos | null> {
         return this.AutoridadRepository.eliminar(id);
     }
 }

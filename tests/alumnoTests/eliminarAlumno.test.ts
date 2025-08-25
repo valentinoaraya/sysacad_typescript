@@ -1,15 +1,16 @@
-import { AlumnoService } from "../../src/services/AlumnoService";
-import { instanciaAlumno as alumno } from "../utils";
+import { AlumnoService } from "../../src/services/AlumnoService"
+import { crearInstanciaAlumno } from "../utils";
 
 test('deberia eliminar una alumno por ID de la base de datos', async () => {
-    const alumnoDB = await AlumnoService.crearAlumno(alumno);
+    const alumno = await crearInstanciaAlumno();
+    const alumnoCreado = await AlumnoService.crearAlumno(alumno);
 
-    await AlumnoService.eliminarAlumno(alumnoDB.id as number);
+    expect(alumnoCreado).toBeTruthy();
+    expect(alumnoCreado?.id).toBeDefined();
 
-    const alumnoBorrado = await globalThis.prisma.alumnos.findUnique({
-        where: { id: alumnoDB.id }
-    });
+    const alumnoEliminado = await AlumnoService.eliminarAlumno(alumnoCreado!.id!);
 
-    expect(alumnoBorrado).toBeFalsy();
-});
+    expect(alumnoEliminado).toBeTruthy();
+    expect(alumnoEliminado?.id).toBe(alumnoCreado!.id);
+})
 
