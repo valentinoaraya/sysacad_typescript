@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ficha de: {{alumno.apellido}}, {{alumno.nombre}}</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 2rem 4rem;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .half {
+            flex: 1;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .left {
+            background-color: #fff;
+            text-align: left;
+        }
+
+        .right {
+            background-color: #fff;
+            text-align: right;
+        }
+
+        .text-justificado {
+            text-align: justify;
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="half left">
+            <img src="/src/static/img/logo-ministerio.png" alt="Logo Ministerio" style="width: 304px; height: auto;">
+        </div>
+        <div class="half right">
+            <img src="/src/static/img/logo-ministerio.png" alt="Logo UTN" style="width: 304px; height: auto;">
+        </div>
+    </div>
+    <p class="text-justificado">Nombre y apellido del alumno: <strong>{{alumno.apellido}}</strong> <strong>{{alumno.nombre}}</strong></p>
+    <p class="text-justificado">Número de documento: <strong>{{alumno.nroDocumento}}</strong> </p>
+    <p class="text-justificado">Tipo de documento: <strong>{{alumno.tipoDocumento}}</strong> </p>
+    <p class="text-justificado">Fecha de nacimiento: <strong>{{alumno.fechaNacimiento}}</strong> </p>
+    <p class="text-justificado">Sexo: <strong>{{alumno.sexo}}</strong> </p>
+    <p class="text-justificado">Número de legajo: <strong>{{alumno.nroLegajo}}</strong> </p>
+    <p class="text-justificado">Fecha de ingreso: <strong>{{alumno.fechaIngreso}}</strong> </p>
+    <p class="text-justificado">Facultad: <strong>{{facultad.nombre}}</strong> </p>
+</body>
+
+</html>

@@ -15,6 +15,7 @@ export interface DocumentOptions {
 
 export abstract class Document {
     protected plantillaPath = "src/templates/certificado.html";
+    protected plantillaFichaPath = "src/templates/ficha.html";
 
     abstract generar(options: DocumentOptions): Promise<Buffer>;
 
@@ -22,6 +23,12 @@ export abstract class Document {
         const plantilla = await fs.readFile(this.plantillaPath, "utf-8");
         const template = Handlebars.compile(plantilla);
         return template(context);
+    }
+
+    protected async renderTemplateFicha(content: Record<string, any>): Promise<string> {
+        const plantilla = await fs.readFile(this.plantillaFichaPath, "utf-8");
+        const template = Handlebars.compile(plantilla);
+        return template(content);
     }
 }
 
@@ -61,6 +68,17 @@ export class ODTDocument extends Document {
 
         const odtBuffer = await fs.readFile(odtPath);
         return odtBuffer;
+    }
+}
+
+export class FichaDocument extends Document {
+    async generar(options: DocumentOptions): Promise<Buffer> {
+        const html = await this.renderTemplateFicha(options.context)
+
+        const file = { content: html }
+        const pdfBuffer = await htmlPdf.generatePdf(file, { format: "A4" })
+        return pdfBuffer as unknown as Buffer;
+
     }
 }
 

@@ -17,3 +17,20 @@ export const obtenerCertificadoAlumno = async (req: Request, res: Response) => {
         res.status(500).send({ error: error.message })
     }
 }
+
+export const obtenerFichaAlumno = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.body
+
+        const bufferAndJSON = await AlumnoService.obtenerFichaAlumno(id)
+
+        return res.status(200).send({
+            ficha: bufferAndJSON.buffer,
+            datos: bufferAndJSON.json
+        })
+
+    } catch (error: any) {
+        console.error(error)
+        res.status(500).send({ error: error.message })
+    }
+}
