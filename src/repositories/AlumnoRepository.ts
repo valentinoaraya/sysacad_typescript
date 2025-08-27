@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 
 export class AlumnoRepository {
     protected readonly model = prisma.alumnos
-    protected readonly includes?: any;
 
     private readonly creator: BaseCreator<AlumnoAtributos>
     private readonly finder: BaseFinder<AlumnoAtributos>
@@ -14,10 +13,10 @@ export class AlumnoRepository {
     private readonly deleter: BaseDeleter<AlumnoAtributos>
 
     constructor() {
-        this.creator = new BaseCreator<AlumnoAtributos>(this.model, this.includes)
-        this.finder = new BaseFinder<AlumnoAtributos>(this.model, this.includes)
-        this.updater = new BaseUpdater<AlumnoAtributos>(this.model, this.includes)
-        this.deleter = new BaseDeleter(this.model, this.includes)
+        this.creator = new BaseCreator<AlumnoAtributos>(this.model)
+        this.finder = new BaseFinder<AlumnoAtributos>(this.model)
+        this.updater = new BaseUpdater<AlumnoAtributos>(this.model)
+        this.deleter = new BaseDeleter(this.model)
     }
 
     async crear(data: AlumnoAtributos): Promise<AlumnoAtributos> {

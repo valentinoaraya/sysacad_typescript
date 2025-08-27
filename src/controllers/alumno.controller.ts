@@ -1,14 +1,12 @@
 import { Request, Response } from "express"
 import { AlumnoService } from "../services/AlumnoService"
-import { decodeId } from "../utils/hashids"
 
 export const obtenerCertificadoAlumno = async (req: Request, res: Response) => {
     try {
-        const { id, tipo } = req.params
+        const { tipo } = req.params
+        const { id } = req.body
 
-        const decodedId = decodeId(id)
-
-        const buffer = await AlumnoService.obtenerCertificadoAlumnoRegular(Number(decodedId), tipo)
+        const buffer = await AlumnoService.obtenerCertificadoAlumnoRegular(id, tipo)
 
         res.setHeader("Content-Disposition", `attachment; filename=certificado.${tipo}`);
         res.setHeader("Content-Type", "application/octet-stream");
