@@ -1,6 +1,6 @@
 import { AlumnoRepository } from "../repositories/AlumnoRepository";
 import { AlumnoAtributos } from "../types";
-import { obtenerTipoDocumento } from "./Documentos";
+import { FichaDocument, obtenerTipoDocumento } from "./Documentos";
 
 export class AlumnoService {
     private static readonly AlumnoRepository = new AlumnoRepository();
@@ -46,5 +46,30 @@ export class AlumnoService {
             context,
             nombre: "certificado"
         })
+    }
+
+    static async obtenerFichaAlumno(id: number): Promise<{ buffer: Buffer, json: Record<string, any> }> {
+
+        const alumno = await this.AlumnoRepository.buscarPorId(id)
+
+        if (!alumno) throw new Error("Alumno no encontrado.")
+
+        const context = {
+            ...alumno,
+            facultad: { nombre: "Facultad de Ingeniería", ciudad: "Buenos Aires" },
+        }
+
+        const documento = new FichaDocument()
+
+        const buffer = await documento.generar({
+            carpeta: "/tmp",
+            context,
+            nombre: `ficha_${alumno.apellido}_${alumno.nombre}`
+        })
+
+        return {
+            buffer,
+            json: context
+        }
     }
 }
