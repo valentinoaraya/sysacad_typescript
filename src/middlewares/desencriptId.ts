@@ -2,11 +2,17 @@ import { Request, Response, NextFunction } from "express"
 import { decodeId } from "../utils/hashids"
 
 export const decodificarId = async (req: Request, res: Response, next: NextFunction) => {
-    const { id } = req.params
+    try {
+        const { id } = req.params
 
-    const decodedId = Number(decodeId(id))
+        const decodedId = Number(decodeId(id))
 
-    req.body.id = decodedId
+        if (!req.body) req.body = {};
+        req.body.id = decodedId;
 
-    next()
+        next()
+    } catch (error: any) {
+        console.error(error)
+        res.status(500).send({ error: error.message })
+    }
 }
