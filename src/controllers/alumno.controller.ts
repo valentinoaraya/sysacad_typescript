@@ -6,6 +6,8 @@ export const obtenerCertificadoAlumno = async (req: Request, res: Response) => {
         const { tipo } = req.params
         const { id } = req.body
 
+        console.log(id)
+
         const buffer = await AlumnoService.obtenerCertificadoAlumnoRegular(id, tipo)
 
         res.setHeader("Content-Disposition", `attachment; filename=certificado.${tipo}`);
@@ -24,7 +26,7 @@ export const obtenerFichaAlumno = async (req: Request, res: Response) => {
 
         const bufferAndJSON = await AlumnoService.obtenerFichaAlumno(id)
 
-        return res.status(200).send({
+        res.status(200).send({
             ficha: bufferAndJSON.buffer,
             datos: bufferAndJSON.json
         })
