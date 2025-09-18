@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN npm run build
 RUN npm ci --only=production --no-audit --no-fund && \
     rm -rf src tsconfig.json
 
-FROM gcr.io/distroless/nodejs18:nonroot
+FROM gcr.io/distroless/nodejs20:nonroot
 
 WORKDIR /app
 
